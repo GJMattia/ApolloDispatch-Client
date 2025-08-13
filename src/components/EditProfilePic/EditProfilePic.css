@@ -1,0 +1,35 @@
+.ProfilePicsOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  margin: 1rem;
+}
+
+.ProfilePicOption {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 11rem;
+  height: 11rem;
+  padding: 1rem;
+}
+
+.ProfilePicOption > p {
+  width: 100%;
+  text-align: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgb(193, 193, 193);
+  margin-top: 2rem;
+}
+
+.OptionPic {
+  width: 5rem;
+}
+
+.SelectedProfilePic {
+  border: 1px dotted white;
+  border-radius: 0.5rem;
+}

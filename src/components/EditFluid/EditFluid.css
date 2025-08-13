@@ -1,0 +1,11 @@
+.Fluid {
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.Fluid > h1 {
+  cursor: pointer;
+  padding: 1rem;
+}

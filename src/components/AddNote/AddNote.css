@@ -1,0 +1,7 @@
+.NoteInput {
+  width: 80%;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem;
+  resize: vertical;
+}

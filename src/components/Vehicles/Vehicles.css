@@ -1,0 +1,178 @@
+.Vehicles {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  gap: 1rem;
+  /* overflow: hidden; */
+}
+
+/* Vehicle List */
+
+.VehicleSearch {
+  width: 80%;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  background-color: #020c1a;
+  color: white;
+}
+
+.VehicleList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  width: 90%;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  overflow-y: scroll;
+  /* background-color: #020c1a; */
+  margin-top: 0;
+}
+
+.Vehicle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  background-color: #020c1a;
+  margin: 1rem;
+}
+
+.Vehicle:hover {
+  background-color: rgb(0, 29, 58);
+}
+
+.VehicleTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem;
+  font-weight: 900;
+}
+
+.VehicleName {
+  font-size: 1.8rem;
+}
+
+.VehicleTable th {
+  box-sizing: border-box;
+  padding-bottom: 1rem;
+}
+
+.VehicleTable td {
+  box-sizing: border-box;
+  width: 10%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
+
+.VehicleTable th,
+.VehicleTable td {
+  text-align: center;
+}
+
+.VehicleTable > thead {
+  border-bottom: 1px solid gray;
+}
+
+.VehicleTable > tbody {
+  border-bottom: 1px solid gray;
+}
+
+.NotesBtn {
+  box-sizing: border-box;
+  background-color: #020c1a;
+  color: white;
+  border: 1px solid gray;
+  width: 40%;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.NotesBtn:hover {
+  background-color: dodgerblue;
+}
+
+.NoteList {
+  list-style-type: disc;
+  width: 100%;
+}
+
+.Note {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.Add {
+  box-sizing: border-box;
+  bottom: 1rem;
+  right: 1rem;
+  position: absolute;
+  background-color: dodgerblue;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+}
+
+.Add:hover {
+  color: black;
+  background-color: lawngreen;
+}
+
+.DeleteNoteBtn {
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: crimson;
+  border: none;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+}
+
+.NoNotes {
+  color: crimson;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .VehicleList {
+    width: 100%;
+  }
+
+  .Vehicle {
+    width: 95%;
+    font-size: 0.7rem;
+  }
+
+  .VehicleSearch {
+    width: 95%;
+  }
+}
+
+.CreateBtn {
+  box-sizing: border-box;
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: white;
+}

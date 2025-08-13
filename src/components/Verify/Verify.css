@@ -1,0 +1,69 @@
+.Verify {
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+  background-color: #0b111a;
+  color: white;
+  border-radius: 0.5rem;
+  border: 1px dotted white;
+  user-select: none;
+  margin-top: 3rem;
+}
+
+.Verify > input {
+  width: 50%;
+  height: 3rem;
+  border: 1px solid #3e4759;
+  font-size: 1.5rem;
+  border-radius: 0.2rem;
+  margin: 1rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  text-align: center;
+}
+
+.Verify > input:focus {
+  outline: none;
+  border: 1px solid dodgerblue;
+}
+
+.Verify > input::placeholder {
+  color: #9ba0ab;
+}
+
+.Verify > h1 {
+  text-align: center;
+  width: 95%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #3e4759;
+}
+
+.Verify > p {
+  text-align: center;
+  width: 90%;
+}
+
+.VerifyBtn {
+  background-color: dodgerblue;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  border: none;
+  width: 80%;
+  cursor: pointer;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.VerifyBtn:hover {
+  background-color: rgb(97, 176, 255);
+}
+
+.VerifyBtn.NotYet {
+  background-color: #9ba0ab;
+}

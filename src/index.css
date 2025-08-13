@@ -1,0 +1,192 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.Blur {
+  filter: blur(5px);
+}
+
+.NotYet {
+  background-color: #9ba0ab;
+  pointer-events: none;
+}
+
+.Error {
+  color: crimson;
+}
+
+.Grey {
+  color: #838894;
+}
+
+.Red {
+  color: crimson;
+}
+
+.Green {
+  color: lawngreen;
+}
+
+.SettingsBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 10;
+  width: 50%;
+  position: absolute;
+  top: 15%;
+  background-color: #0b111a;
+  color: white;
+  border-radius: 0.5rem;
+  border: 1px dotted white;
+  user-select: none;
+}
+
+.SettingsBox > h1 {
+  width: 90%;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #3e4759;
+}
+
+.SettingsBox > p {
+  width: 50%;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #3e4759;
+}
+
+.SettingsBtns {
+  border-top: 1px solid #3e4759;
+  padding-top: 0.5rem;
+  width: 90%;
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.SettingsBtn {
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: dodgerblue;
+  width: 30%;
+  cursor: pointer;
+  margin: 0.5rem;
+  padding: 1rem;
+  color: white;
+  font-weight: 900;
+}
+
+.SettingsBtn:hover {
+  filter: brightness(130%);
+}
+
+.Update {
+  background-color: dodgerblue;
+}
+
+.Cancel {
+  background-color: crimson;
+}
+
+.Like {
+  background-color: lawngreen;
+}
+
+.No {
+  pointer-events: none;
+  user-select: none;
+}
+
+.date-green {
+  color: limegreen;
+}
+
+.date-yellow {
+  color: yellow;
+}
+
+.date-red {
+  color: crimson;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Edit Window */
+
+.EditWindowOverlay {
+  position: fixed; /* lock to viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
+  backdrop-filter: blur(6px); /* background blur */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* above all */
+}
+
+.EditWindow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #020c1a;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  width: 50%;
+  max-width: 600px;
+}
+
+.EditWindow > h1 {
+  font-size: 1.5rem;
+  width: 95%;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #3e4759;
+}
+
+.EditWindow > h3 {
+  text-align: center;
+  width: 80%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #3e4759;
+}
+
+@media (max-width: 800px) {
+  .EditWindow {
+    width: 95%;
+  }
+}

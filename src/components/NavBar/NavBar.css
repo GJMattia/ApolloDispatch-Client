@@ -1,0 +1,50 @@
+.NavBar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  background-color: #020c1a;
+  user-select: none;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  z-index: 9012;
+  border-bottom: 1px solid white;
+}
+
+.NavBar > h4:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+.ApolloDispatch:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+.LogOption:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+.NavOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+}
+
+.NavOptions > li:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+@media (max-width: 800px) {
+  .NavBar {
+    font-size: 0.7rem;
+  }
+}

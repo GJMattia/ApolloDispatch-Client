@@ -1,0 +1,43 @@
+.AuthPage {
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30rem;
+  background-color: #0b111a;
+  color: white;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  user-select: none;
+  margin-top: 3rem;
+}
+
+.AuthHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #3e4759;
+}
+
+.AuthLink {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: dodgerblue;
+}
+
+.AuthLink:hover {
+  text-decoration: underline;
+}
+
+.Forgot {
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+.Forgot:hover {
+  text-decoration: underline;
+}

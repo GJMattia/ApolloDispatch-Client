@@ -1,0 +1,5 @@
+.active-warn {
+  border-radius: 0.5rem;
+  background-color: black;
+  border: 1px solid white;
+}

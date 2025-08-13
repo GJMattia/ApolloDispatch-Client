@@ -1,0 +1,105 @@
+.AccountPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 70%;
+  margin: 2rem;
+}
+
+.AccountGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  user-select: none;
+}
+
+.Profile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  background-color: #0b111a;
+  color: white;
+  border-radius: 0.5rem;
+  border: 1px dotted rgb(193, 193, 193);
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  margin-right: 0.5rem;
+}
+
+.Profile > h1 {
+  width: 90%;
+  padding-bottom: 0.5rem;
+  margin: 0.5rem;
+  border-bottom: 1px solid rgb(193, 193, 193);
+}
+
+.VerifyBtn {
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: dodgerblue;
+  width: 95%;
+  cursor: pointer;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.VerifyBtn:hover {
+  background-color: rgb(97, 176, 255);
+}
+
+.EditProfilePic {
+  position: absolute;
+  width: 1.5rem;
+  right: 12%;
+  top: 15%;
+  filter: invert();
+  cursor: pointer;
+}
+.EditPerks {
+  position: absolute;
+  width: 1rem;
+  right: 10%;
+  top: 42%;
+  filter: invert();
+  cursor: pointer;
+}
+
+.ProfileBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1rem;
+  padding-bottom: 1.5rem;
+  width: 80%;
+  border-bottom: 1px solid rgb(193, 193, 193);
+}
+
+.ProfilePicture {
+  width: 8rem;
+}
+
+.AccountPerks {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 70%;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dotted rgb(193, 193, 193);
+}
+
+.AccountPerks > img {
+  width: 2.5rem;
+}

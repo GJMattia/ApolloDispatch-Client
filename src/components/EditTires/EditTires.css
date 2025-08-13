@@ -1,0 +1,22 @@
+.Tire {
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.Tire > h1 {
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.active-yes {
+  background-color: black;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+}
+.active-no {
+  border-radius: 0.5rem;
+  background-color: black;
+  border: 1px solid white;
+}

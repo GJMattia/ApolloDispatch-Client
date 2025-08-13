@@ -1,0 +1,66 @@
+.LoginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.LoginPage > p {
+  text-align: center;
+}
+
+.LoginForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Logo {
+  font-size: 3rem;
+  font-family: cursive;
+  margin: 0.5rem;
+}
+
+.LoginTitle {
+  font-weight: 100;
+}
+
+.LoginForm > input {
+  width: 90%;
+  height: 2rem;
+  border: 1px solid #3e4759;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  margin: 1rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.LoginForm > input::placeholder {
+  color: #9ba0ab;
+}
+
+.LoginForm > input:focus {
+  outline: none;
+  border: 1px solid dodgerblue;
+}
+
+.LoginFormBtn {
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: dodgerblue;
+  width: 95%;
+  cursor: pointer;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.LoginFormBtn:hover {
+  background-color: rgb(97, 176, 255);
+}

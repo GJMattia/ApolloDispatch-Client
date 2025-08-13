@@ -1,0 +1,95 @@
+.SignUpForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.SignUpForm > input {
+  width: 90%;
+  height: 2rem;
+  border: 1px solid #3e4759;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  margin: 0.8rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.SignUpForm > label {
+  font-size: 0.8rem;
+  width: 90%;
+}
+
+.SignUpForm > input::placeholder {
+  color: #9ba0ab;
+}
+
+.SignUpForm > input:focus {
+  outline: none;
+  border: 1px solid dodgerblue;
+}
+
+.SignUpBtn {
+  box-sizing: border-box;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: dodgerblue;
+  width: 95%;
+  cursor: pointer;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: black;
+}
+
+.SignUpBtn:hover {
+  background-color: rgb(101, 178, 255);
+}
+
+.BirthTitle {
+  width: 90%;
+  border-top: 1px solid #3e4759;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 1rem;
+  margin-bottom: 0;
+}
+
+.Birthday {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #3e4759;
+}
+
+.Birthday > input {
+  width: 15%;
+  text-align: center;
+  height: 2rem;
+  border: 1px solid #3e4759;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  margin: 1rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.Birthday > input::placeholder {
+  color: #9ba0ab;
+}
+
+.Birthday > input:focus {
+  outline: none;
+  border: 1px solid dodgerblue;
+}
