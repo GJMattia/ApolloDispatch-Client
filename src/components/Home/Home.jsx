@@ -3,8 +3,8 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="Home">
-      <h1>one day something will be here,</h1>
-      <h2>that day is not today</h2>
+      <h2>one day something will be here,</h2>
+      <h3>that day is not today</h3>
     </div>
   );
 }

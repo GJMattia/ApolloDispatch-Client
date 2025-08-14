@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 90%;
+  width: 100%;
 }
 
 .RegistrationInfo {
@@ -10,6 +10,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.RegistrationInfo > h4 {
+  text-align: center;
 }
 
 .DateInput {

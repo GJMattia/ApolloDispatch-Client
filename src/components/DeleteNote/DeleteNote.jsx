@@ -34,7 +34,7 @@ export default function DeleteNote({
         <h1>Delete a note for {selectedNote.vehicleName}</h1>
         <h3>Delete the following note?</h3>
 
-        <h4>{selectedNote.noteContent}</h4>
+        <h4 className="DeleteNoteInfo">{selectedNote.noteContent}</h4>
 
         <div className="SettingsBtns">
           <button

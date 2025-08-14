@@ -199,4 +199,13 @@ ul {
   .EditWindow {
     width: 95%;
   }
+
+  .SettingsBtns {
+    width: 100%;
+  }
+
+  .SettingsBtn {
+    font-size: 0.9rem;
+    width: 45%;
+  }
 }
