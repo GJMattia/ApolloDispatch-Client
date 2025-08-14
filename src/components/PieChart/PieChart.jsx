@@ -1,6 +1,6 @@
 export default function PieChart({
   data,
-  size = 80,
+  size = 100,
   thickness = 160,
   green = "#22c55e",
   red = "#ef4444",

@@ -162,9 +162,9 @@ export default function Vehicles() {
         placeholder="Search by name or last 4 of VIN..."
         aria-label="Search vehicles"
       />
-      {/* <button className="CreateBtn" onClick={() => setCreateWindow(true)}>
-        Create Vehicle
-      </button> */}
+      <button className="CreateBtn" onClick={() => setCreateWindow(true)}>
+        +
+      </button>
       {visibleVehicles && visibleVehicles.length > 0 ? (
         <ul className="VehicleList">
           <AnimatePresence initial={false}>

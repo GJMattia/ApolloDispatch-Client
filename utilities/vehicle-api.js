@@ -1,5 +1,6 @@
 import sendRequest from "./send-request";
-const BASE_URL = "http://localhost:4741/vehicles";
+// const BASE_URL = "http://localhost:4741/vehicles";
+const BASE_URL = "https://apollodispatch-api.onrender.com/vehicles";
 
 export async function getVehicles() {
   return sendRequest(`${BASE_URL}/getvehicles`);

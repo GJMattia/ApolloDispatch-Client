@@ -19,6 +19,16 @@ body {
   height: 100vh;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  flex: 1 1 auto; /* fills the rest without overflow */
+  min-height: 0; /* prevents flex overflow */
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -180,7 +190,7 @@ ul {
 
 .EditWindow > h3 {
   text-align: center;
-  width: 80%;
+  width: 85%;
   padding-bottom: 1rem;
   border-bottom: 1px solid #3e4759;
 }

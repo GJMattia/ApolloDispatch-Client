@@ -1,6 +1,6 @@
 export default function PieChart2({
   data, // { label: 'Drive Status', 0: 2, 1: 534, 2: 234 }
-  size = 80,
+  size = 100,
   thickness = 160,
   centerText = true,
   colors = ["#22c55e", "#facc15", "#ef4444"], // green, yellow, red

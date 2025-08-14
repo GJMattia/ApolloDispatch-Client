@@ -43,12 +43,12 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  padding: 1rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   border-radius: 0.5rem;
   border: 1px solid black;
   background-color: #020c1a;
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 .Vehicle:hover {
@@ -69,6 +69,7 @@
 .VehicleTable th {
   box-sizing: border-box;
   padding-bottom: 1rem;
+  user-select: none;
 }
 
 .VehicleTable td {
@@ -151,6 +152,23 @@
   color: crimson;
   text-align: center;
 }
+.CreateBtn {
+  position: absolute;
+  box-sizing: border-box;
+  background-color: #020c1a;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: white;
+  z-index: 9000;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.CreateBtn:hover {
+  background-color: dodgerblue;
+}
 
 @media (max-width: 800px) {
   .VehicleList {
@@ -165,14 +183,8 @@
   .VehicleSearch {
     width: 95%;
   }
-}
 
-.CreateBtn {
-  box-sizing: border-box;
-  background-color: dodgerblue;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-top: 1rem;
-  color: white;
+  .CreateBtn {
+    display: none;
+  }
 }

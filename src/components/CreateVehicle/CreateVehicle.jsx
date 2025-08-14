@@ -39,6 +39,7 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
           name="name"
           value={formData.name}
           onChange={handleChange}
+          maxLength={15}
         />
 
         <input
@@ -47,6 +48,7 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
           name="vin"
           value={formData.vin}
           onChange={handleChange}
+          maxLength={4}
         />
 
         <input

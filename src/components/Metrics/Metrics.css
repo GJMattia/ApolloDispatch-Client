@@ -10,6 +10,7 @@
   box-sizing: border-box;
   padding-bottom: 2rem;
   z-index: 900;
+  user-select: none;
 }
 
 .Metrics > h2 {

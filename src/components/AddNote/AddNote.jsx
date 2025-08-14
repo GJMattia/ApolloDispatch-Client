@@ -42,6 +42,7 @@ export default function AddNote({
             placeholder="Write your note"
             value={note}
             onChange={(e) => setNote(e.target.value)}
+            maxLength={150}
           />
           <div className="SettingsBtns">
             <button

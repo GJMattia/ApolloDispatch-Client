@@ -32,7 +32,7 @@ export default function DeleteNote({
     <div className="EditWindowOverlay">
       <div className="EditWindow">
         <h1>Delete a note for {selectedNote.vehicleName}</h1>
-        <h3>Are you sure you want to delete the following note?</h3>
+        <h3>Delete the following note?</h3>
 
         <h4>{selectedNote.noteContent}</h4>
 
