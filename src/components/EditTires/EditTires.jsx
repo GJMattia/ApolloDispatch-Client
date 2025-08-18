@@ -56,7 +56,7 @@ export default function EditTires({
           >
             Cancel
           </button>
-          <button onClick={handleTire} className="SettingsBtn Update">
+          <button onClick={handleTire} className="SettingsBtn">
             Update
           </button>
         </div>

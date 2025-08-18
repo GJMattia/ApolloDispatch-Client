@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import * as userService from "../../../utilities/user-services";
 import "./NavBar.css";
 

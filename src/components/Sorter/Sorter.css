@@ -7,27 +7,26 @@
   border-radius: 0.5rem;
   background-color: #020c1a;
   width: 80%;
+  user-select: none;
+  padding: 1rem;
 }
 
-.Sorter > li {
-  margin: 1rem;
-  cursor: pointer;
-}
-
-.Sorter > li:hover {
-  color: dodgerblue;
-}
-
-.Sorter li.active {
-  color: dodgerblue;
-  font-weight: bold;
+.FilterSelect {
+  border: 1px solid gray;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+  background-color: #020c1a;
+  color: white;
 }
 
 @media (max-width: 800px) {
   .Sorter {
-    text-align: center;
     font-size: 0.8rem;
-    margin-top: 1rem;
+    margin-top: 0rem;
     width: 95%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
   }
 }

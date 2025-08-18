@@ -39,11 +39,6 @@ ul {
   filter: blur(5px);
 }
 
-.NotYet {
-  background-color: #9ba0ab;
-  pointer-events: none;
-}
-
 .Error {
   color: crimson;
 }
@@ -118,16 +113,13 @@ ul {
   filter: brightness(130%);
 }
 
-.Update {
-  background-color: dodgerblue;
-}
-
 .Cancel {
   background-color: crimson;
 }
 
-.Like {
-  background-color: lawngreen;
+.NotYet {
+  background-color: #9ba0ab;
+  pointer-events: none;
 }
 
 .No {

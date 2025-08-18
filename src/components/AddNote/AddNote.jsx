@@ -51,7 +51,7 @@ export default function AddNote({
             >
               Cancel
             </button>
-            <button onClick={handleNote} className="SettingsBtn Update">
+            <button onClick={handleNote} className="SettingsBtn">
               Add Note
             </button>
           </div>

@@ -61,7 +61,7 @@ export default function EditStatus({
           >
             Cancel
           </button>
-          <button onClick={handleStatus} className="SettingsBtn Update">
+          <button onClick={handleStatus} className="SettingsBtn">
             Update
           </button>
         </div>

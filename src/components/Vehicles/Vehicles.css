@@ -47,8 +47,8 @@
   box-sizing: border-box;
   border-radius: 0.5rem;
   border: 1px solid black;
-  background-color: #020c1a;
   margin: 0.5rem;
+  background-color: #020c1a;
 }
 
 .Vehicle:hover {
@@ -60,10 +60,6 @@
   border-collapse: collapse;
   margin: 1rem;
   font-weight: 900;
-}
-
-.VehicleName {
-  font-size: 1.8rem;
 }
 
 .VehicleTable th {
@@ -109,6 +105,10 @@
 }
 
 .NoteList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   list-style-type: disc;
   width: 100%;
 }
@@ -119,6 +119,7 @@
   margin: 1rem;
   gap: 1rem;
   align-items: center;
+  width: 100%;
 }
 
 .Add {
@@ -170,7 +171,40 @@
   background-color: dodgerblue;
 }
 
+.Grounded {
+  background-color: rgb(121, 0, 0);
+}
+.Grounded:hover {
+  background-color: darkred;
+}
+
+.MetricsWindow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  background-color: #020c1a;
+  border-radius: 0.3rem;
+  user-select: none;
+}
+
+.MetricsBtn {
+  margin: 0.3rem;
+  border: none;
+  color: white;
+  background-color: #020c1a;
+  cursor: pointer;
+}
+
+.MetricsBtn:hover {
+  color: dodgerblue;
+}
+
 @media (max-width: 800px) {
+  .Vehicles {
+    gap: 0rem;
+  }
   .VehicleList {
     width: 100%;
   }
@@ -181,10 +215,14 @@
   }
 
   .VehicleSearch {
+    padding: 1rem;
     width: 95%;
   }
 
   .CreateBtn {
+    display: none;
+  }
+  .MetricsWindow {
     display: none;
   }
 }

@@ -86,7 +86,7 @@ export default function EditInspection({
           >
             Cancel
           </button>
-          <button onClick={handleInspection} className="SettingsBtn Update">
+          <button onClick={handleInspection} className="SettingsBtn">
             Update
           </button>
         </div>

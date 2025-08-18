@@ -31,20 +31,23 @@ export default function Vehicles() {
   const [inspectionWindow, setInspectionWindow] = useState(false);
   const [noteWindow, setNoteWindow] = useState(false);
   const [deleteNoteWindow, setDeleteNoteWindow] = useState(false);
+  const [metricsWindow, setMetricsWindow] = useState(false);
 
   // NEW: simple tire filter toggle
   const [filters, setFilters] = useState({
-    tire: false,
-    fluid: false,
-    grounded: false,
+    tire: "", // "", true, false
+    fluid: "", // "", true, false
+    status: "", // "", 0, 1, 2
+    type: "", // "", "Electric Van", "Step Van"
   });
 
   const visibleVehicles = useMemo(() => {
     return vehicles.filter(
       (v) =>
-        (!filters?.tire || v.tire === false) &&
-        (!filters?.fluid || v.fluid === false) &&
-        (!filters?.grounded || v.status === 2) &&
+        (filters.tire === "" || v.tire === filters.tire) &&
+        (filters.fluid === "" || v.fluid === filters.fluid) &&
+        (filters.status === "" || v.status === filters.status) &&
+        (!filters.type || v.type === filters.type) &&
         matchesSearch(v, deferredSearch)
     );
   }, [vehicles, filters, deferredSearch]);
@@ -52,18 +55,12 @@ export default function Vehicles() {
   function matchesSearch(v, qRaw) {
     const q = qRaw.trim().toLowerCase();
     if (!q) return true;
-
     const name = (v.name || "").toLowerCase();
-
-    // sanitize VIN, allow searching entire VIN too, but prefer last-4 when numeric
     const vin = String(v.vin || "")
       .replace(/[\s-]/g, "")
       .toLowerCase();
     const last4 = vin.slice(-4);
-
-    // if user typed only digits (1–4), use last-4 match
     const isDigits = /^[0-9]{1,4}$/.test(q);
-
     return name.includes(q) || (isDigits ? last4.includes(q) : vin.includes(q));
   }
 
@@ -151,7 +148,28 @@ export default function Vehicles() {
         />
       )}
 
-      {vehicles && <Metrics vehicles={vehicles} />}
+      <div className="MetricsWindow">
+        <button
+          className="MetricsBtn"
+          onClick={() => setMetricsWindow((prev) => !prev)}
+        >
+          {metricsWindow ? "Hide Metrics" : "Show Metrics"}
+        </button>
+
+        <AnimatePresence>
+          {metricsWindow && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ overflow: "hidden", width: "100%" }}
+            >
+              {vehicles && <Metrics vehicles={vehicles} />}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
       <Sorter filters={filters} onChange={setFilters} />
 
       <input
@@ -176,13 +194,15 @@ export default function Vehicles() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.18 }}
-                className={`Vehicle ${vehicle.className || ""}`}
+                className={`Vehicle ${vehicle.className || ""} ${
+                  vehicle.status === 2 ? "Grounded" : ""
+                }`}
                 onClick={() => handleVehicleClick(vehicle)}
               >
                 <table className="VehicleTable">
                   <thead>
                     <tr>
-                      <th className="VehicleName">{vehicle.name}</th>
+                      <th>{vehicle.name}</th>
                       <th>VIN</th>
                       <th>Inspection</th>
                       <th>Tire Pressure</th>
@@ -241,7 +261,7 @@ export default function Vehicles() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.22 }}
-                      style={{ overflow: "hidden", width: "90%" }}
+                      style={{ overflow: "hidden", width: "100%" }}
                     >
                       {!vehicle.notes || vehicle.notes.length === 0 ? (
                         <h4 className="NoNotes">This vehicle has no notes</h4>
@@ -312,7 +332,9 @@ export default function Vehicles() {
                 </AnimatePresence>
 
                 <button
-                  className="NotesBtn"
+                  className={`NotesBtn ${
+                    vehicle.status === 2 ? "Grounded" : ""
+                  }`}
                   aria-expanded={openNotesId === vehicle._id}
                   onClick={(e) => {
                     e.stopPropagation();

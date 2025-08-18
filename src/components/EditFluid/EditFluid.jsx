@@ -55,7 +55,7 @@ export default function EditFluid({
           >
             Cancel
           </button>
-          <button onClick={handleFluid} className="SettingsBtn Update">
+          <button onClick={handleFluid} className="SettingsBtn">
             Update
           </button>
         </div>

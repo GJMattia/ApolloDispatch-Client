@@ -6,7 +6,7 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
   const [formData, setFormData] = useState({
     name: "",
     vin: "",
-    inspection: null,
+    inspection: "",
     type: "",
   });
 
@@ -80,7 +80,12 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
           >
             Cancel
           </button>
-          <button onClick={handleCreateVehicle} className="SettingsBtn Update">
+          <button
+            onClick={handleCreateVehicle}
+            className={`SettingsBtn ${
+              !formData.name || !formData.vin || !formData.type ? "NotYet" : ""
+            }`}
+          >
             Create Vehicle
           </button>
         </div>

@@ -43,7 +43,7 @@ export default function DeleteNote({
           >
             Cancel
           </button>
-          <button onClick={handleDeleteNote} className="SettingsBtn Update">
+          <button onClick={handleDeleteNote} className="SettingsBtn">
             Confirm
           </button>
         </div>
