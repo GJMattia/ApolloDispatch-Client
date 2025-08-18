@@ -10,47 +10,16 @@ export default function SignUpForm({ setUser }) {
     email: "",
     password: "",
     confirm: "",
-    birthday: {
-      dd: "",
-      mm: "",
-      yyyy: "",
-    },
     error: "",
   });
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
-
-    if (name === "dd" || name === "mm" || name === "yyyy") {
-      if (/^\d*$/.test(value)) {
-        let isValid = true;
-
-        if (name === "dd" && (parseInt(value, 10) > 31 || value.length > 2)) {
-          isValid = false;
-        }
-
-        if (name === "mm" && (parseInt(value, 10) > 12 || value.length > 2)) {
-          isValid = false;
-        }
-
-        if (isValid) {
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            birthday: {
-              ...prevFormData.birthday,
-              [name]: value,
-            },
-            error: "",
-          }));
-        }
-      }
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-        error: "",
-      });
-    }
+    setFormData({
+      ...formData,
+      [name]: value,
+      error: "",
+    });
   };
 
   const handleSubmit = async (evt) => {
@@ -156,61 +125,8 @@ export default function SignUpForm({ setUser }) {
         >
           Retype Password
         </label>
-        <p
-          className={`BirthTitle ${
-            formData.birthday.dd.length === 0 &&
-            formData.birthday.mm.length === 0 &&
-            formData.birthday.yyyy.length === 0
-              ? "Grey"
-              : formData.birthday.dd.length === 2 &&
-                formData.birthday.mm.length === 2 &&
-                formData.birthday.yyyy.length === 4
-              ? "Green"
-              : "Red"
-          }`}
-        >
-          Please the age of your company
-        </p>
-        <div className="Birthday">
-          <input
-            placeholder="MM"
-            minLength="2"
-            maxLength="2"
-            type="text"
-            name="mm"
-            value={formData.birthday.mm}
-            onChange={handleChange}
-            required
-          />
-          <input
-            placeholder="DD"
-            minLength="2"
-            maxLength="2"
-            type="text"
-            name="dd"
-            value={formData.birthday.dd}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            placeholder="YYYY"
-            minLength="4"
-            maxLength="4"
-            type="text"
-            name="yyyy"
-            value={formData.birthday.yyyy}
-            onChange={handleChange}
-            required
-          />
-        </div>
         <button
-          className={`SignUpBtn ${
-            formData.password.length <= 6 ||
-            formData.birthday.yyyy.toString().length !== 4
-              ? "NotYet"
-              : ""
-          }`}
+          className={`SignUpBtn ${formData.password.length}`}
           type="submit"
           disabled={disable}
         >

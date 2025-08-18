@@ -1,17 +1,17 @@
-.EditRegistration {
+.EditInspection {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
 }
 
-.RegistrationInfo {
+.InspectionInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.RegistrationInfo > h4 {
+.InspectionInfo > h4 {
   text-align: center;
 }
 

@@ -6,7 +6,7 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
   const [formData, setFormData] = useState({
     name: "",
     vin: "",
-    registration: "",
+    inspection: null,
     type: "",
   });
 
@@ -54,9 +54,9 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
         <input
           type="date"
           className="CreateInput"
-          placeholder="Registration Expiration"
-          name="registration"
-          value={formData.registration}
+          placeholder="Inspection Expiration"
+          name="inspection"
+          value={formData.inspection}
           onChange={handleChange}
         />
 

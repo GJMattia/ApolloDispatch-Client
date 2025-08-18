@@ -1,61 +1,59 @@
-import "./EditRegistration.css";
+import "./EditInspection.css";
 import { useState } from "react";
 import { getDateClass } from "../../../utilities/helpful-functions.js";
-import { updateRegistration } from "../../../utilities/vehicle-api.js";
+import { updateInspection } from "../../../utilities/vehicle-api.js";
 
-export default function EditRegistration({
+export default function EditInspection({
   selectedVehicle,
-  setRegistrationWindow,
+  setInspectionWindow,
   setVehicles,
 }) {
-  const [registration, setRegistration] = useState(
-    selectedVehicle.registration
-  );
+  const [inspection, setInspection] = useState(selectedVehicle.inspection);
 
-  async function handleRegistration() {
+  async function handleInspection() {
     try {
-      let response = await updateRegistration({
+      let response = await updateInspection({
         vehicleID: selectedVehicle._id,
-        registration: registration,
+        inspection: inspection,
       });
 
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, registration: response.registration }
+            ? { ...v, inspection: response.inspection }
             : v
         )
       );
 
-      setRegistrationWindow(false);
+      setInspectionWindow(false);
     } catch (error) {
-      console.error("error updating registration date", error);
+      console.error("error updating inspection date", error);
     }
   }
 
   return (
     <div className="EditWindowOverlay">
       <div className="EditWindow">
-        <h1>Update registration date for {selectedVehicle.name}</h1>
-        <h3>Select the new registration date for {selectedVehicle.name}</h3>
+        <h1>Update inspection date for {selectedVehicle.name}</h1>
+        <h3>Select the new inspection date for {selectedVehicle.name}</h3>
 
-        <div className="EditRegistration">
-          <div className="RegistrationInfo">
+        <div className="EditInspection">
+          <div className="InspectionInfo">
             <h4>Current Expiration Date</h4>
             <input
               className="DateInput No"
               type="date"
               value={
-                selectedVehicle.registration
-                  ? new Date(selectedVehicle.registration)
+                selectedVehicle.inspection
+                  ? new Date(selectedVehicle.inspection)
                       .toISOString()
                       .split("T")[0]
                   : ""
               }
               readOnly
             />
-            <h3 className={getDateClass(selectedVehicle.registration)}>
-              {new Date(selectedVehicle.registration).toLocaleDateString(
+            <h3 className={getDateClass(selectedVehicle.inspection)}>
+              {new Date(selectedVehicle.inspection).toLocaleDateString(
                 "en-US",
                 {
                   month: "long",
@@ -64,17 +62,17 @@ export default function EditRegistration({
               )}
             </h3>
           </div>
-          <div className="RegistrationInfo">
+          <div className="InspectionInfo">
             <h4>New Expiration Date</h4>
             <input
               className="DateInput"
               type="date"
-              value={registration}
-              onChange={(e) => setRegistration(e.target.value)}
+              value={inspection}
+              onChange={(e) => setInspection(e.target.value)}
             />
-            <h3 className={getDateClass(registration)}>
+            <h3 className={getDateClass(inspection)}>
               {" "}
-              {new Date(registration).toLocaleDateString("en-US", {
+              {new Date(inspection).toLocaleDateString("en-US", {
                 month: "long",
                 year: "numeric",
               })}
@@ -83,12 +81,12 @@ export default function EditRegistration({
         </div>
         <div className="SettingsBtns">
           <button
-            onClick={() => setRegistrationWindow((prev) => !prev)}
+            onClick={() => setInspectionWindow((prev) => !prev)}
             className="SettingsBtn Cancel"
           >
             Cancel
           </button>
-          <button onClick={handleRegistration} className="SettingsBtn Update">
+          <button onClick={handleInspection} className="SettingsBtn Update">
             Update
           </button>
         </div>

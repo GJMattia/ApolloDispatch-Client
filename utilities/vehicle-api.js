@@ -1,6 +1,10 @@
 import sendRequest from "./send-request";
 // const BASE_URL = "http://localhost:4741/vehicles";
-const BASE_URL = "https://apollodispatch-api.onrender.com/vehicles";
+// const BASE_URL = "https://apollodispatch-api.onrender.com/vehicles";
+const BASE_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:4741/vehicles"
+    : "https://apollodispatch-api.onrender.com/vehicles";
 
 export async function getVehicles() {
   return sendRequest(`${BASE_URL}/getvehicles`);
@@ -38,12 +42,12 @@ export async function updateStatus(statusInfo) {
   }
 }
 
-export async function updateRegistration(registrationInfo) {
+export async function updateInspection(inspectionInfo) {
   try {
     return await sendRequest(
-      `${BASE_URL}/updateregistration`,
+      `${BASE_URL}/updateinspection`,
       "PUT",
-      registrationInfo
+      inspectionInfo
     );
   } catch (error) {
     console.error("error updating drive status", error);

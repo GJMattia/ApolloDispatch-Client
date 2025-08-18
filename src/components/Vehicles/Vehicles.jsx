@@ -6,7 +6,7 @@ import CreateVehicle from "../CreateVehicle/CreateVehicle.jsx";
 import EditTires from "../EditTires/EditTires.jsx";
 import EditFluid from "../EditFluid/EditFluid.jsx";
 import EditStatus from "../EditStatus/EditStatus.jsx";
-import EditRegistration from "../EditRegistration/EditRegistration.jsx";
+import EditInspection from "../EditInspection/EditInspection.jsx";
 import AddNote from "../AddNote/AddNote.jsx";
 import { getDateClass } from "../../../utilities/helpful-functions.js";
 import Sorter from "../Sorter/Sorter.jsx";
@@ -28,7 +28,7 @@ export default function Vehicles() {
   const [tireWindow, setTireWindow] = useState(false);
   const [fluidWindow, setFluidWindow] = useState(false);
   const [statusWindow, setStatusWindow] = useState(false);
-  const [registrationWindow, setRegistrationWindow] = useState(false);
+  const [inspectionWindow, setInspectionWindow] = useState(false);
   const [noteWindow, setNoteWindow] = useState(false);
   const [deleteNoteWindow, setDeleteNoteWindow] = useState(false);
 
@@ -127,9 +127,9 @@ export default function Vehicles() {
           setVehicles={setVehicles}
         />
       )}
-      {registrationWindow && (
-        <EditRegistration
-          setRegistrationWindow={setRegistrationWindow}
+      {inspectionWindow && (
+        <EditInspection
+          setInspectionWindow={setInspectionWindow}
           selectedVehicle={selectedVehicle}
           setVehicles={setVehicles}
         />
@@ -184,7 +184,7 @@ export default function Vehicles() {
                     <tr>
                       <th className="VehicleName">{vehicle.name}</th>
                       <th>VIN</th>
-                      <th>Registration</th>
+                      <th>Inspection</th>
                       <th>Tire Pressure</th>
                       <th>Wiper Fluid</th>
                       <th>Status</th>
@@ -195,16 +195,25 @@ export default function Vehicles() {
                       <td>{vehicle.type}</td>
                       <td>{vehicle.vin}</td>
                       <td
-                        onClick={() => setRegistrationWindow(true)}
-                        className={getDateClass(vehicle.registration)}
+                        onClick={() => setInspectionWindow(true)}
+                        className={getDateClass(vehicle.inspection)}
                       >
-                        {new Date(vehicle.registration).toLocaleDateString(
-                          "en-US",
-                          {
-                            month: "long",
-                            year: "numeric",
-                          }
-                        )}
+                        {vehicle.inspection
+                          ? (() => {
+                              const date = new Date(vehicle.inspection);
+                              const tenYearsAgo = new Date();
+                              tenYearsAgo.setFullYear(
+                                tenYearsAgo.getFullYear() - 10
+                              );
+
+                              return date > tenYearsAgo
+                                ? date.toLocaleDateString("en-US", {
+                                    month: "long",
+                                    year: "numeric",
+                                  })
+                                : "No Sticker";
+                            })()
+                          : "No Sticker"}
                       </td>
                       <td onClick={() => setTireWindow(true)}>
                         {vehicle.tire ? "✅" : "❌"}
