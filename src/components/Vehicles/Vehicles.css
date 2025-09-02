@@ -20,6 +20,8 @@
   border: 1px solid white;
   background-color: #020c1a;
   color: white;
+  text-align: center;
+  font-weight: 900;
 }
 
 .VehicleList {
@@ -32,7 +34,6 @@
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   overflow-y: scroll;
-  /* background-color: #020c1a; */
   margin-top: 0;
 }
 
@@ -58,7 +59,7 @@
 .VehicleTable {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem;
+  margin: 0.5rem;
   font-weight: 900;
 }
 
@@ -71,8 +72,8 @@
 .VehicleTable td {
   box-sizing: border-box;
   width: 10%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   cursor: pointer;
 }
 
@@ -139,20 +140,23 @@
   background-color: lawngreen;
 }
 
-.DeleteNoteBtn {
-  box-sizing: border-box;
+.NoteBtn {
   cursor: pointer;
-  background-color: crimson;
   border: none;
-  color: white;
-  border-radius: 0.2rem;
-  padding: 0.2rem;
+  background-color: transparent;
+  filter: brightness(1.5);
+  margin: -0.3rem;
+}
+
+.NoteBtn:hover {
+  filter: brightness(2);
 }
 
 .NoNotes {
   color: crimson;
   text-align: center;
 }
+
 .CreateBtn {
   position: absolute;
   box-sizing: border-box;
@@ -224,5 +228,17 @@
   }
   .MetricsWindow {
     display: none;
+  }
+
+  .NotesBtn {
+    font-size: 0.6rem;
+  }
+
+  .NoteBtn {
+    font-size: 0.7rem;
+  }
+
+  .Add {
+    font-size: 0.6rem;
   }
 }

@@ -1,6 +1,6 @@
 import "./Sorter.css";
 
-export default function Sorter({ filters, onChange }) {
+export default function Sorter({ filters, onChange, sortBy, setSortBy }) {
   return (
     <ul className="Sorter">
       {/* Vehicle Type */}
@@ -10,11 +10,21 @@ export default function Sorter({ filters, onChange }) {
           value={filters.type}
           onChange={(e) => onChange((f) => ({ ...f, type: e.target.value }))}
         >
-          <option value="">All Vehicle Types</option>
+          <option value="">All Vehicles</option>
+          <option value="recent">Recent(4D)</option>
           <option value="Electric Van">Electric Van</option>
           <option value="Step Van">Step Van</option>
         </select>
       </li>
+      {/* Sorter */}
+      <select
+        className="FilterSelect"
+        value={sortBy}
+        onChange={(e) => setSortBy(e.target.value)}
+      >
+        <option value="">Numerical</option>
+        <option value="grounded">Charlie Mode</option>
+      </select>
       {/* Tire Filter */}
       <li>
         <select
@@ -63,7 +73,7 @@ export default function Sorter({ filters, onChange }) {
             }))
           }
         >
-          <option value="">All Vehicle Status</option>
+          <option value="">All Status</option>
           <option value={0}>Adequate</option>
           <option value={1}>Caution</option>
           <option value={2}>Grounded</option>

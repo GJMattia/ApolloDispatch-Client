@@ -69,3 +69,11 @@ export async function deleteNote(deleteInfo) {
     console.error("error deleting note", error);
   }
 }
+
+export async function editNote(editInfo) {
+  try {
+    return await sendRequest(`${BASE_URL}/editnote`, "PUT", editInfo);
+  } catch (error) {
+    console.error("error editing note", error);
+  }
+}

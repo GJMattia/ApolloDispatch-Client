@@ -1,0 +1,22 @@
+.Footer {
+  background-color: red;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #010710;
+  color: rgb(187, 187, 187);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.Footer > p {
+  user-select: none;
+  cursor: pointer;
+}
+
+.Footer > p:hover {
+  color: dodgerblue;
+}

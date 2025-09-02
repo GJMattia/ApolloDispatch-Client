@@ -1,15 +1,15 @@
+import "./App.css";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../../utilities/user-services";
 import AuthPage from "../Auth/AuthPage/AuthPage";
 import NavBar from "../NavBar/NavBar";
-// import AccountPage from "../AccountPage/AccountPage";
 import Home from "../Home/Home";
 import Verify from "../Verify/Verify";
-// import Feed from "../Feed/Feed";
 import Vehicles from "../Vehicles/Vehicles";
-import Test from "../Test/Test";
-import "./App.css";
+import Resources from "../Resources/Resources";
+import Version from "../Version/Version";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -20,19 +20,23 @@ function App() {
       <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route
-            path="/account"
-            element={<AccountPage user={user} setUser={setUser} />}
-          /> */}
-
-          {/* <Route path="/feed" element={<Feed user={user} />} /> */}
-          <Route path="/vehicles" element={<Vehicles user={user} />} />
+          <Route
+            path="/vehicles"
+            element={
+              user ? <Vehicles user={user} /> : <Navigate to="/" replace />
+            }
+          />
           <Route path="/login" element={<AuthPage setUser={setUser} />} />
           <Route
             path="/verify"
             element={<Verify user={user} setUser={setUser} />}
           />
-          <Route path="/test" element={<Test />} />
+          <Route
+            path="/resources"
+            element={user ? <Resources /> : <Navigate to="/" replace />}
+          />
+
+          <Route path="/version" element={<Version />} />
         </Routes>
       </div>
     </div>

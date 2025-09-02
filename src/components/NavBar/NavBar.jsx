@@ -19,9 +19,8 @@ export default function NavBar({ user, setUser }) {
 
       {user && (
         <ul className="NavOptions">
+          <li onClick={() => navigate("/resources")}>Resources</li>
           <li onClick={() => navigate("/vehicles")}>Vehicles</li>
-          {/* <li onClick={() => navigate("/feed")}>Feed</li>
-        <li onClick={() => navigate("/test")}>Test</li> */}
         </ul>
       )}
 

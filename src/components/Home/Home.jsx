@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Computer from "../../assets/images/home/computer.png";
 import Truck from "../../assets/images/home/truck.png";
 import Cash from "../../assets/images/home/cash.png";
+import Footer from "../Footer/Footer";
 
 export default function Home() {
   const [show, setShow] = useState(true);
@@ -39,7 +40,7 @@ export default function Home() {
             exit="exit"
           >
             <motion.h1 className="HomeTitle" variants={fadeUp}>
-              Welcome to Apollo Dispatch
+              Apollo Dispatch
             </motion.h1>
 
             <motion.p className="HomeSubtitle" variants={fadeUp}>
@@ -111,12 +112,14 @@ export default function Home() {
                   }}
                 />
                 <h2>Profit</h2>
-                <p>Am i right?</p>
+                <p>Am I right?</p>
               </motion.div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <Footer />
     </div>
   );
 }

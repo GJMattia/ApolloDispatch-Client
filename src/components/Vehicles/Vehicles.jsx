@@ -12,6 +12,7 @@ import { getDateClass } from "../../../utilities/helpful-functions.js";
 import Sorter from "../Sorter/Sorter.jsx";
 import Metrics from "../Metrics/Metrics.jsx";
 import DeleteNote from "../DeleteNote/DeleteNote.jsx";
+import EditNote from "../EditNote/EditNote.jsx";
 
 export default function Vehicles() {
   //Vehicle Data
@@ -21,7 +22,8 @@ export default function Vehicles() {
   const [selectedNote, setSelectedNote] = useState("");
 
   const [search, setSearch] = useState("");
-  const deferredSearch = useDeferredValue(search); // smoother typing w/ animations
+  const deferredSearch = useDeferredValue(search);
+  const [sortBy, setSortBy] = useState("");
 
   //Edit Windows
   const [createWindow, setCreateWindow] = useState(false);
@@ -31,6 +33,7 @@ export default function Vehicles() {
   const [inspectionWindow, setInspectionWindow] = useState(false);
   const [noteWindow, setNoteWindow] = useState(false);
   const [deleteNoteWindow, setDeleteNoteWindow] = useState(false);
+  const [editNoteWindow, setEditNoteWindow] = useState(false);
   const [metricsWindow, setMetricsWindow] = useState(false);
 
   // NEW: simple tire filter toggle
@@ -42,15 +45,35 @@ export default function Vehicles() {
   });
 
   const visibleVehicles = useMemo(() => {
-    return vehicles.filter(
-      (v) =>
+    const fourDaysAgo = Date.now() - 4 * 24 * 60 * 60 * 1000;
+
+    const filtered = vehicles.filter((v) => {
+      const matchesType =
+        filters.type === "" ||
+        v.type === filters.type ||
+        (filters.type === "recent" &&
+          v.updatedAt &&
+          new Date(v.updatedAt).getTime() >= fourDaysAgo);
+
+      return (
         (filters.tire === "" || v.tire === filters.tire) &&
         (filters.fluid === "" || v.fluid === filters.fluid) &&
         (filters.status === "" || v.status === filters.status) &&
-        (!filters.type || v.type === filters.type) &&
+        matchesType &&
         matchesSearch(v, deferredSearch)
-    );
-  }, [vehicles, filters, deferredSearch]);
+      );
+    });
+
+    if (sortBy === "grounded") {
+      return [...filtered].sort((a, b) => {
+        if (a.status === 2 && b.status !== 2) return -1;
+        if (a.status !== 2 && b.status === 2) return 1;
+        return 0;
+      });
+    }
+
+    return filtered;
+  }, [vehicles, filters, sortBy, deferredSearch]);
 
   function matchesSearch(v, qRaw) {
     const q = qRaw.trim().toLowerCase();
@@ -88,6 +111,16 @@ export default function Vehicles() {
       noteIndex,
     });
     setDeleteNoteWindow(true);
+  }
+
+  function handleEditNote(vehicleId, vehicleName, noteContent, noteIndex) {
+    setSelectedNote({
+      vehicleId,
+      vehicleName,
+      noteContent,
+      noteIndex,
+    });
+    setEditNoteWindow(true);
   }
 
   return (
@@ -148,6 +181,14 @@ export default function Vehicles() {
         />
       )}
 
+      {editNoteWindow && (
+        <EditNote
+          selectedNote={selectedNote}
+          setEditNoteWindow={setEditNoteWindow}
+          setVehicles={setVehicles}
+        />
+      )}
+
       <div className="MetricsWindow">
         <button
           className="MetricsBtn"
@@ -170,7 +211,12 @@ export default function Vehicles() {
           )}
         </AnimatePresence>
       </div>
-      <Sorter filters={filters} onChange={setFilters} />
+      <Sorter
+        filters={filters}
+        onChange={setFilters}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
 
       <input
         className="VehicleSearch"
@@ -178,6 +224,7 @@ export default function Vehicles() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search by name or last 4 of VIN..."
+        maxLength={4}
         aria-label="Search vehicles"
       />
       <button className="CreateBtn" onClick={() => setCreateWindow(true)}>
@@ -264,23 +311,32 @@ export default function Vehicles() {
                       style={{ overflow: "hidden", width: "100%" }}
                     >
                       {!vehicle.notes || vehicle.notes.length === 0 ? (
-                        <h4 className="NoNotes">This vehicle has no notes</h4>
+                        <h4 className="NoNotes">This vehicle has no notes.</h4>
                       ) : (
                         <ul className="NoteList">
                           <AnimatePresence initial={false}>
                             {vehicle.notes.map((note, i) => {
                               const date =
                                 note.createdAt &&
-                                new Date(note.createdAt).toLocaleString(
-                                  "en-US",
-                                  {
-                                    month: "short",
-                                    day: "numeric",
-                                    year: "numeric",
+                                (() => {
+                                  const d = new Date(note.createdAt);
+                                  const mm = String(d.getMonth() + 1).padStart(
+                                    2,
+                                    "0"
+                                  );
+                                  const dd = String(d.getDate()).padStart(
+                                    2,
+                                    "0"
+                                  );
+                                  const yy = String(d.getFullYear()).slice(-2);
+
+                                  const time = d.toLocaleString("en-US", {
                                     hour: "numeric",
                                     minute: "2-digit",
-                                  }
-                                );
+                                  });
+
+                                  return `${mm}-${dd}-${yy} ${time}`;
+                                })();
 
                               const noteText =
                                 typeof note === "string" ? note : note.text;
@@ -304,12 +360,25 @@ export default function Vehicles() {
                                         i
                                       )
                                     }
-                                    className="DeleteNoteBtn"
+                                    className="NoteBtn"
                                   >
-                                    delete
+                                    🗑️
+                                  </button>
+                                  <button
+                                    onClick={() =>
+                                      handleEditNote(
+                                        vehicle._id,
+                                        vehicle.name,
+                                        noteText,
+                                        i
+                                      )
+                                    }
+                                    className="NoteBtn"
+                                  >
+                                    ✏️
                                   </button>
                                   {date && (
-                                    <strong style={{ color: "gray" }}>
+                                    <strong style={{ color: "#c3c3c3ff" }}>
                                       {date}:
                                     </strong>
                                   )}{" "}
@@ -344,8 +413,8 @@ export default function Vehicles() {
                   }}
                 >
                   {openNotesId === vehicle._id
-                    ? "Hide Vehicle Notes"
-                    : "View Vehicle Notes"}
+                    ? "Hide Notes"
+                    : `View Notes (${vehicle.notes.length})`}
                 </button>
               </motion.li>
             ))}

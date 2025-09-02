@@ -31,8 +31,7 @@ export default function DeleteNote({
   return (
     <div className="EditWindowOverlay">
       <div className="EditWindow">
-        <h1>Delete a note for {selectedNote.vehicleName}</h1>
-        <h3>Delete the following note?</h3>
+        <h1>Delete note for {selectedNote.vehicleName}</h1>
 
         <h4 className="DeleteNoteInfo">{selectedNote.noteContent}</h4>
 
@@ -44,7 +43,7 @@ export default function DeleteNote({
             Cancel
           </button>
           <button onClick={handleDeleteNote} className="SettingsBtn">
-            Confirm
+            Delete Note
           </button>
         </div>
       </div>
