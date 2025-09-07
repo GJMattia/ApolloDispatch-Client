@@ -4,6 +4,14 @@ import Footer from "../Footer/Footer";
 
 const releases = [
   {
+    version: "1.2",
+    date: "September 7, 2025",
+    notes: [
+      "condensed sorters/search into one",
+      "added number of search results",
+    ],
+  },
+  {
     version: "1.1",
     date: "September 2, 2025",
     notes: [

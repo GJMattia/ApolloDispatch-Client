@@ -53,6 +53,18 @@ export default function Resources() {
           <h3>Cargo Ford: 235/65 R16</h3>
           <h3>Cargo RAM: 225/75 R16</h3>
         </motion.article>
+
+        <motion.article
+          className="Resource"
+          initial={{ opacity: 0, y: 10, scale: 0.99 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.22, ease: "easeOut", delay: 0.1 }}
+          whileHover={{ y: -2, scale: 1.01 }}
+        >
+          <h2>Dealer Phone Numbers</h2>
+          <h3>Otis Ford: 631-653-4000</h3>
+          <h3>Freightliner: 631-563-1300</h3>
+        </motion.article>
       </div>
       <p className="rock">
         there is not much on this page right now. i am aware

@@ -211,22 +211,26 @@ export default function Vehicles() {
           )}
         </AnimatePresence>
       </div>
-      <Sorter
-        filters={filters}
-        onChange={setFilters}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-      />
 
-      <input
-        className="VehicleSearch"
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search by name or last 4 of VIN..."
-        maxLength={4}
-        aria-label="Search vehicles"
-      />
+      <div className="Hud">
+        <input
+          className="VehicleSearch"
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Name/VIN"
+          maxLength={4}
+          aria-label="Search vehicles"
+        />
+        <Sorter
+          filters={filters}
+          onChange={setFilters}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+        />
+        <h4 className="SearchResults">Results: {visibleVehicles.length}</h4>
+      </div>
+
       <button className="CreateBtn" onClick={() => setCreateWindow(true)}>
         +
       </button>

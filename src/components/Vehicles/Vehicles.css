@@ -12,16 +12,35 @@
 
 /* Vehicle List */
 
-.VehicleSearch {
+.Hud {
   width: 80%;
-  padding: 1rem;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #020c1a;
   border-radius: 0.5rem;
-  border: 1px solid white;
+}
+
+.VehicleSearch {
+  width: 10%;
+  padding: 0.4rem;
+  box-sizing: border-box;
+  border-radius: 0.3rem;
+  border: 1px solid rgb(163, 163, 163);
   background-color: #020c1a;
   color: white;
   text-align: center;
   font-weight: 900;
+}
+
+.VehicleSearch:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.SearchResults {
+  user-select: none;
 }
 
 .VehicleList {
@@ -205,7 +224,23 @@
   color: dodgerblue;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1100px) {
+  .Hud {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 95%;
+  }
+
+  .SearchResults {
+    position: absolute;
+    margin: 0;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.8rem;
+  }
+
   .Vehicles {
     gap: 0rem;
   }
@@ -219,8 +254,9 @@
   }
 
   .VehicleSearch {
-    padding: 1rem;
-    width: 95%;
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+    width: 90%;
   }
 
   .CreateBtn {

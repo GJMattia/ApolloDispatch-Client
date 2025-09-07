@@ -13,14 +13,14 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav className="NavBar">
-      <h1 className="ApolloDispatch" onClick={() => navigate("/")}>
+      <h3 className="ApolloDispatch" onClick={() => navigate("/")}>
         Apollo Dispatch
-      </h1>
+      </h3>
 
       {user && (
         <ul className="NavOptions">
-          <li onClick={() => navigate("/resources")}>Resources</li>
           <li onClick={() => navigate("/vehicles")}>Vehicles</li>
+          <li onClick={() => navigate("/resources")}>Resources</li>
         </ul>
       )}
 
