@@ -20,6 +20,7 @@ export default function NavBar({ user, setUser }) {
       {user && (
         <ul className="NavOptions">
           <li onClick={() => navigate("/vehicles")}>Vehicles</li>
+          <li onClick={() => navigate("/Schedule")}>Schedule</li>
           <li onClick={() => navigate("/resources")}>Resources</li>
         </ul>
       )}

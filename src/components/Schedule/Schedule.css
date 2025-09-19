@@ -1,0 +1,68 @@
+.Schedule {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+.ScheduleTable {
+  width: 80%;
+  background-color: #020c1a;
+  color: white;
+  border-collapse: collapse;
+}
+
+.ScheduleTable th,
+.ScheduleTable td {
+  border: 1px solid rgb(109, 109, 109);
+  padding: 0.6rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ScheduleUI {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  width: 90%;
+  background-color: #020c1a;
+  margin-bottom: 1rem;
+}
+
+.ScheduleUI2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 0.3rem;
+  width: 90%;
+  background-color: #020c1a;
+  margin: 1rem;
+}
+
+.ScheduleStatus {
+  cursor: pointer;
+}
+
+.ScheduleStatus:hover {
+  background-color: dodgerblue;
+}
+
+.ScheduleBtn {
+  border-radius: 0.2rem;
+  border: none;
+  width: 6rem;
+  padding: 0.5rem;
+  background-color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.ScheduleBtn:hover {
+  background-color: dodgerblue;
+}

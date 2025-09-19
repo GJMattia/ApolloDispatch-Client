@@ -1,6 +1,4 @@
 import sendRequest from "./send-request";
-// const BASE_URL = "http://localhost:4741/vehicles";
-// const BASE_URL = "https://apollodispatch-api.onrender.com/vehicles";
 const BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:4741/vehicles"

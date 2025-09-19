@@ -10,6 +10,7 @@ import Verify from "../Verify/Verify";
 import Vehicles from "../Vehicles/Vehicles";
 import Resources from "../Resources/Resources";
 import Version from "../Version/Version";
+import Schedule from "../Schedule/Schedule";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -35,8 +36,8 @@ function App() {
             path="/resources"
             element={user ? <Resources /> : <Navigate to="/" replace />}
           />
-
           <Route path="/version" element={<Version />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </div>
     </div>

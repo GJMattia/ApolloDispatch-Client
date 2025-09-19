@@ -178,6 +178,8 @@ ul {
   text-align: center;
   padding-bottom: 1rem;
   border-bottom: 1px solid #3e4759;
+  color: white;
+  user-select: none;
 }
 
 .EditWindow > h3 {
