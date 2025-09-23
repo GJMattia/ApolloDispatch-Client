@@ -8,11 +8,15 @@ import EditFluid from "../EditFluid/EditFluid.jsx";
 import EditStatus from "../EditStatus/EditStatus.jsx";
 import EditInspection from "../EditInspection/EditInspection.jsx";
 import AddNote from "../AddNote/AddNote.jsx";
-import { getDateClass } from "../../../utilities/helpful-functions.js";
+import {
+  getDateClass,
+  formatVehicleType,
+} from "../../../utilities/helpful-functions.js";
 import Sorter from "../Sorter/Sorter.jsx";
 import Metrics from "../Metrics/Metrics.jsx";
 import DeleteNote from "../DeleteNote/DeleteNote.jsx";
 import EditNote from "../EditNote/EditNote.jsx";
+import EditVin from "../EditVin/EditVin.jsx";
 
 export default function Vehicles() {
   //Vehicle Data
@@ -21,6 +25,7 @@ export default function Vehicles() {
   const [openNotesId, setOpenNotesId] = useState(null);
   const [selectedNote, setSelectedNote] = useState("");
 
+  //Search Info
   const [search, setSearch] = useState("");
   const deferredSearch = useDeferredValue(search);
   const [sortBy, setSortBy] = useState("");
@@ -35,6 +40,7 @@ export default function Vehicles() {
   const [deleteNoteWindow, setDeleteNoteWindow] = useState(false);
   const [editNoteWindow, setEditNoteWindow] = useState(false);
   const [metricsWindow, setMetricsWindow] = useState(false);
+  const [vinWindow, setVinWindow] = useState(false);
 
   // NEW: simple tire filter toggle
   const [filters, setFilters] = useState({
@@ -43,6 +49,18 @@ export default function Vehicles() {
     status: "", // "", 0, 1, 2
     type: "", // "", "Electric Van", "Step Van"
   });
+
+  function sortVehicles(list) {
+    const typeOrder = {
+      "Electric Van": 1,
+      "Cargo Van": 2,
+      "Step Van": 3,
+    };
+
+    return [...list].sort((a, b) => {
+      return (typeOrder[a.type] || 99) - (typeOrder[b.type] || 99);
+    });
+  }
 
   const visibleVehicles = useMemo(() => {
     const fourDaysAgo = Date.now() - 4 * 24 * 60 * 60 * 1000;
@@ -91,7 +109,7 @@ export default function Vehicles() {
     async function handleGetVehicles() {
       try {
         const response = await getVehicles();
-        setVehicles(response);
+        setVehicles(sortVehicles(response));
       } catch (error) {
         console.error("Error getting posts", error);
       }
@@ -189,6 +207,14 @@ export default function Vehicles() {
         />
       )}
 
+      {vinWindow && (
+        <EditVin
+          selectedVehicle={selectedVehicle}
+          setVinWindow={setVinWindow}
+          setVehicles={setVehicles}
+        />
+      )}
+
       <div className="MetricsWindow">
         <button
           className="MetricsBtn"
@@ -219,7 +245,7 @@ export default function Vehicles() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Name/VIN"
-          maxLength={4}
+          maxLength={17}
           aria-label="Search vehicles"
         />
         <Sorter
@@ -250,59 +276,89 @@ export default function Vehicles() {
                 }`}
                 onClick={() => handleVehicleClick(vehicle)}
               >
-                <table className="VehicleTable">
-                  <thead>
-                    <tr>
-                      <th>{vehicle.name}</th>
-                      <th>VIN</th>
-                      <th>Inspection</th>
-                      <th>Tire Pressure</th>
-                      <th>Wiper Fluid</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{vehicle.type}</td>
-                      <td>{vehicle.vin}</td>
-                      <td
-                        onClick={() => setInspectionWindow(true)}
-                        className={getDateClass(vehicle.inspection)}
-                      >
-                        {vehicle.inspection
-                          ? (() => {
-                              const date = new Date(vehicle.inspection);
-                              const tenYearsAgo = new Date();
-                              tenYearsAgo.setFullYear(
-                                tenYearsAgo.getFullYear() - 10
-                              );
+                <div className="VehicleContents">
+                  <div className="VehicleInfo">
+                    <h1 className="VehicleName">{vehicle.name}</h1>
+                    <h5 className="VehicleType">
+                      {formatVehicleType(vehicle.type)}
+                    </h5>
+                  </div>
+                  <table className="VehicleTable">
+                    <thead>
+                      <tr>
+                        <th
+                          className="Clickable"
+                          onClick={() => setVinWindow(true)}
+                        >
+                          VIN
+                        </th>
+                        <th>Inspection</th>
+                        <th>T-Pressure</th>
+                        <th>W-Fluid</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="TextSelect">
+                          {vehicle.vin && (
+                            <>
+                              <span className="vinFirst12">
+                                {vehicle.vin.slice(0, -4)}
+                              </span>
+                              <span>{vehicle.vin.slice(-4)}</span>
+                            </>
+                          )}
+                        </td>
+                        <td
+                          onClick={() => setInspectionWindow(true)}
+                          className={`${getDateClass(
+                            vehicle.inspection
+                          )} Clickable`}
+                        >
+                          {vehicle.inspection
+                            ? (() => {
+                                const date = new Date(vehicle.inspection);
+                                const tenYearsAgo = new Date();
+                                tenYearsAgo.setFullYear(
+                                  tenYearsAgo.getFullYear() - 10
+                                );
 
-                              return date > tenYearsAgo
-                                ? date.toLocaleDateString("en-US", {
-                                    month: "long",
-                                    year: "numeric",
-                                  })
-                                : "No Sticker";
-                            })()
-                          : "No Sticker"}
-                      </td>
-                      <td onClick={() => setTireWindow(true)}>
-                        {vehicle.tire ? "✅" : "❌"}
-                      </td>
-                      <td onClick={() => setFluidWindow(true)}>
-                        {vehicle.fluid ? "✅" : "❌"}
-                      </td>
-                      <td onClick={() => setStatusWindow(true)}>
-                        {vehicle.status === 0
-                          ? "✅"
-                          : vehicle.status === 1
-                          ? "⚠️"
-                          : "❌"}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-
+                                return date > tenYearsAgo
+                                  ? date.toLocaleDateString("en-US", {
+                                      month: "short",
+                                      year: "numeric",
+                                    })
+                                  : "No Sticker";
+                              })()
+                            : "No Sticker"}
+                        </td>
+                        <td
+                          className="Clickable"
+                          onClick={() => setTireWindow(true)}
+                        >
+                          {vehicle.tire ? "✅" : "❌"}
+                        </td>
+                        <td
+                          className="Clickable"
+                          onClick={() => setFluidWindow(true)}
+                        >
+                          {vehicle.fluid ? "✅" : "❌"}
+                        </td>
+                        <td
+                          className="Clickable"
+                          onClick={() => setStatusWindow(true)}
+                        >
+                          {vehicle.status === 0
+                            ? "✅"
+                            : vehicle.status === 1
+                            ? "⚠️"
+                            : "❌"}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 <AnimatePresence initial={false}>
                   {openNotesId === vehicle._id && (
                     <motion.div

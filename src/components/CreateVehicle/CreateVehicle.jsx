@@ -44,11 +44,11 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
 
         <input
           className="CreateInput"
-          placeholder="Last 4 of VIN"
+          placeholder="VIN"
           name="vin"
           value={formData.vin}
           onChange={handleChange}
-          maxLength={4}
+          maxLength={17}
         />
 
         <input

@@ -7,6 +7,15 @@
   height: 100%;
   user-select: none;
 }
+
+.ScheduleScroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  overflow-y: scroll;
+}
 .ScheduleTable {
   width: 80%;
   background-color: #020c1a;
@@ -65,4 +74,10 @@
 
 .ScheduleBtn:hover {
   background-color: dodgerblue;
+}
+
+@media (max-width: 1100px) {
+  .ScheduleTable {
+    width: 95%;
+  }
 }

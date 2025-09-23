@@ -14,6 +14,7 @@ export default function Sorter({ filters, onChange, sortBy, setSortBy }) {
           <option value="recent">Recent(4D)</option>
           <option value="Electric Van">Electric Van</option>
           <option value="Step Van">Step Van</option>
+          <option value="Cargo Van">Cargo Van</option>
         </select>
       </li>
       {/* Sorter */}

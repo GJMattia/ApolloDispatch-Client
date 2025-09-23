@@ -75,3 +75,11 @@ export async function editNote(editInfo) {
     console.error("error editing note", error);
   }
 }
+
+export async function updateVin(vinInfo) {
+  try {
+    return await sendRequest(`${BASE_URL}/updatevin`, "PUT", vinInfo);
+  } catch (error) {
+    console.error("error editing vin", error);
+  }
+}

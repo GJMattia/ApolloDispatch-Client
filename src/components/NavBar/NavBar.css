@@ -1,11 +1,12 @@
 .NavBar {
+  position: relative;
   height: 4rem;
   flex: 0 0 auto;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: white;
   background-color: #020c1a;
   user-select: none;
@@ -13,11 +14,6 @@
   box-sizing: border-box;
   z-index: 9012;
   border-bottom: 1px solid white;
-}
-
-.NavBar > h4:hover {
-  cursor: pointer;
-  color: dodgerblue;
 }
 
 .ApolloDispatch:hover {
@@ -43,13 +39,122 @@
   color: dodgerblue;
 }
 
+/* Hamburger menu */
+.NavBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  background-color: transparent;
+}
+
+.NavBtn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.NavBtn:hover {
+  cursor: pointer;
+}
+
+.NavBtn:hover .Slice {
+  border: 0.2rem solid dodgerblue;
+}
+
+.Slice {
+  margin: 0.25rem;
+  width: 100%;
+  height: 0;
+  border: 0.2rem solid white;
+  transition: all 0.3s ease;
+}
+
+.Slice1 {
+  transform: translate3d(0%, 230%, 0) rotate(225deg);
+}
+
+.Slice2 {
+  opacity: 0;
+}
+
+.Slice3 {
+  transform: translate3d(0%, -230%, 0) rotate(-225deg);
+}
+
+/* Backdrop covers the page when menu is open */
+.NavBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 20;
+}
+
+/* Panel drops down from the nav bar */
+.NavDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  overflow: hidden; /* for height animation */
+  background-color: #020c1a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 40;
+}
+
+/* Options list inside dropdown */
+.NavOptions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  width: 100%;
+  border-top: 1px solid rgb(84, 84, 84);
+}
+
+.NavOptions li {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* faint separator */
+  transition: background 120ms ease;
+  text-align: center;
+}
+
+.NavOptions li:last-child {
+  border-bottom: none; /* no divider after last item */
+}
+
+/* remove the last border */
+.NavOptions li:last-child {
+  border-bottom: none;
+}
+
+.NavOptions li:hover {
+  color: dodgerblue;
+}
+
 @media (max-width: 800px) {
+  .NavBar {
+    height: 3rem;
+  }
   .ApolloDispatch {
+    font-size: 0.9rem;
+  }
+
+  .LogOption {
     font-size: 0.8rem;
   }
 
-  .NavBar {
-    height: 2.5rem;
-    font-size: 0.7rem;
+  .NavBtn {
+    transform: scale(0.6); /* shrink everything proportionally */
   }
 }

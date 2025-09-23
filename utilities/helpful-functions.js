@@ -60,3 +60,18 @@ export function getPieChartData(vehicles, fieldName, label) {
     return { label, 0: count0, 1: count1, 2: count2 };
   }
 }
+
+export function formatVehicleType(type) {
+  switch (type) {
+    case "Electric Van":
+      return "EV";
+    case "Step Van":
+      return "Step";
+    case "Cargo Van":
+      return "Cargo";
+    case "Rental Van":
+      return "Rental";
+    default:
+      return type;
+  }
+}

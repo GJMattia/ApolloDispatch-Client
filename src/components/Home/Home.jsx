@@ -119,7 +119,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -4,6 +4,18 @@ import Footer from "../Footer/Footer";
 
 const releases = [
   {
+    version: "1.4",
+    date: "September 23, 2025",
+    notes: [
+      "added full VIN display for desktop",
+      "edit VIN functionality",
+      "updated display of vehicle list",
+      "added sorter for Cargo Vans",
+      "added hamburger menu for navigating pages",
+      "added scrollbar to schedule overflow",
+    ],
+  },
+  {
     version: "1.3",
     date: "September 18, 2025",
     notes: [
@@ -54,9 +66,7 @@ export default function Version() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-      >
-        <h1>AD Version History</h1>
-      </motion.header>
+      ></motion.header>
 
       <div className="V_List">
         <AnimatePresence initial={false}>
@@ -84,7 +94,7 @@ export default function Version() {
           ))}
         </AnimatePresence>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

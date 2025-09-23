@@ -66,49 +66,51 @@ export default function Schedule() {
         </button>
       </div>
 
-      <table className="ScheduleTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Title</th>
-            <th>Confirm Status</th>
-          </tr>
-        </thead>
-
-        <motion.tbody layout>
-          {DAs.length === 0 ? (
+      <div className="ScheduleScroll">
+        <table className="ScheduleTable">
+          <thead>
             <tr>
-              <td colSpan="3" style={{ textAlign: "center", color: "gray" }}>
-                No associates yet
-              </td>
+              <th>Name</th>
+              <th>Title</th>
+              <th>Confirm Status</th>
             </tr>
-          ) : (
-            <AnimatePresence initial={false}>
-              {DAs.map((da) => (
-                <motion.tr
-                  key={da._id}
-                  layout
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                >
-                  <td>{da.name}</td>
-                  <td>{da.title}</td>
-                  <td
-                    onClick={() => handleFlip(da._id)}
-                    className={`ScheduleStatus ${
-                      da.confirmed ? "Green" : "Red"
-                    }`}
+          </thead>
+
+          <motion.tbody layout>
+            {DAs.length === 0 ? (
+              <tr>
+                <td colSpan="3" style={{ textAlign: "center", color: "gray" }}>
+                  No associates yet
+                </td>
+              </tr>
+            ) : (
+              <AnimatePresence initial={false}>
+                {DAs.map((da) => (
+                  <motion.tr
+                    key={da._id}
+                    layout
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   >
-                    {da.confirmed ? "Confirmed" : "Not Confirmed"}
-                  </td>
-                </motion.tr>
-              ))}
-            </AnimatePresence>
-          )}
-        </motion.tbody>
-      </table>
+                    <td>{da.name}</td>
+                    <td>{da.title}</td>
+                    <td
+                      onClick={() => handleFlip(da._id)}
+                      className={`ScheduleStatus ${
+                        da.confirmed ? "Green" : "Red"
+                      }`}
+                    >
+                      {da.confirmed ? "Confirmed" : "Not Confirmed"}
+                    </td>
+                  </motion.tr>
+                ))}
+              </AnimatePresence>
+            )}
+          </motion.tbody>
+        </table>
+      </div>
       <div className="ScheduleUI2">
         <p className="Green">Confirmed: {confirmedCount}</p>
         <p className="Red">Not Confirmed: {unconfirmedCount}</p>
