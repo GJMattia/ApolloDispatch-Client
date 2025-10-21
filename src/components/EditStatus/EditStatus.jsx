@@ -32,7 +32,6 @@ export default function EditStatus({
     <div className="EditWindowOverlay">
       <div className="EditWindow">
         <h1>Update drive status for {selectedVehicle.name}</h1>
-        <h3>Select the drive status for {selectedVehicle.name}</h3>
 
         <div className="Tire">
           <h1

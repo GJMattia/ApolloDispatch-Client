@@ -106,7 +106,7 @@ export default function NavBar({ user, setUser }) {
                     <li role="menuitem" onClick={() => go("/vehicles")}>
                       Vehicles
                     </li>
-                    <li role="menuitem" onClick={() => go("/Schedule")}>
+                    <li role="menuitem" onClick={() => go("/schedule")}>
                       Schedule
                     </li>
                     <li role="menuitem" onClick={() => go("/resources")}>
@@ -115,7 +115,7 @@ export default function NavBar({ user, setUser }) {
                   </>
                 )}
                 <li role="menuitem" onClick={() => go("/version")}>
-                  Version (v1.4)
+                  Version (v1.41)
                 </li>
               </ul>
             </motion.div>

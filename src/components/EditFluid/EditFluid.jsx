@@ -32,8 +32,6 @@ export default function EditFluid({
     <div className="EditWindowOverlay">
       <div className="EditWindow">
         <h1>Update wiper fluid info for {selectedVehicle.name}</h1>
-        <h3>Select the wiper fluid status for {selectedVehicle.name}</h3>
-
         <div className="Fluid">
           <h1
             onClick={() => setFluid(true)}

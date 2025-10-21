@@ -3,10 +3,14 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import CreateDA from "../CreateDA/CreateDA";
 import { getDAs, flipStatus, resetAllStatus } from "../../../utilities/da-api";
+import DeleteDA from "../DeleteDA/DeleteDA";
 
 export default function Schedule() {
   const [addWindow, setAddWindow] = useState(false);
   const [DAs, setDAs] = useState([]);
+  const [deleteDA, setDeleteDA] = useState(false);
+  const [deleteWindow, setDeleteWindow] = useState(false);
+  const [selectedDA, setSelectedDA] = useState("");
 
   const confirmedCount = DAs.filter((d) => d.confirmed).length;
   const unconfirmedCount = DAs.length - confirmedCount;
@@ -52,8 +56,23 @@ export default function Schedule() {
     }
   }
 
+  function deleteClick(da) {
+    setDeleteWindow(true);
+    setSelectedDA(da);
+    console.log(da);
+  }
+
   return (
     <div className="Schedule">
+      {deleteWindow && (
+        <DeleteDA
+          setDeleteWindow={setDeleteWindow}
+          selectedDA={selectedDA}
+          setSelectedDA={setSelectedDA}
+          setDAs={setDAs}
+        />
+      )}
+
       {addWindow && <CreateDA setAddWindow={setAddWindow} setDAs={setDAs} />}
 
       <div className="ScheduleUI">
@@ -63,6 +82,12 @@ export default function Schedule() {
         </button>
         <button className="ScheduleBtn" onClick={handleReset}>
           Reset
+        </button>
+        <button
+          className={`ScheduleBtn ${deleteDA ? "DeleteActive" : ""}`}
+          onClick={() => setDeleteDA(!deleteDA)}
+        >
+          Delete DA
         </button>
       </div>
 
@@ -94,7 +119,12 @@ export default function Schedule() {
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   >
-                    <td>{da.name}</td>
+                    <td
+                      onClick={deleteDA ? () => deleteClick(da) : undefined}
+                      className={deleteDA ? "DAdeleteBtn" : ""}
+                    >
+                      {da.name}
+                    </td>
                     <td>{da.title}</td>
                     <td
                       onClick={() => handleFlip(da._id)}

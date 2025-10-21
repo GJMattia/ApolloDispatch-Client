@@ -33,8 +33,6 @@ export default function EditTires({
     <div className="EditWindowOverlay">
       <div className="EditWindow">
         <h1>Update tire pressure info for {selectedVehicle.name}</h1>
-        <h3>Select the tire pressure status for {selectedVehicle.name}</h3>
-
         <div className="Tire">
           <h1
             onClick={() => setTire(true)}

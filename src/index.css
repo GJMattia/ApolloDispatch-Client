@@ -30,8 +30,8 @@ body {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  flex: 1 1 auto; /* fills the rest without overflow */
-  min-height: 0; /* prevents flex overflow */
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 ul {
@@ -160,17 +160,17 @@ ul {
 /* Edit Window */
 
 .EditWindowOverlay {
-  position: fixed; /* lock to viewport */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
-  backdrop-filter: blur(6px); /* background blur */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999; /* above all */
+  z-index: 999;
 }
 
 .EditWindow {
@@ -215,5 +215,9 @@ ul {
   .SettingsBtn {
     font-size: 0.9rem;
     width: 45%;
+  }
+
+  textarea {
+    font-size: 16px;
   }
 }

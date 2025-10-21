@@ -35,8 +35,6 @@ export default function EditInspection({
     <div className="EditWindowOverlay">
       <div className="EditWindow">
         <h1>Update inspection date for {selectedVehicle.name}</h1>
-        <h3>Select the new inspection date for {selectedVehicle.name}</h3>
-
         <div className="EditInspection">
           <div className="InspectionInfo">
             <h4>Current Expiration Date</h4>

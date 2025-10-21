@@ -18,6 +18,16 @@ export async function createDA(DA) {
   }
 }
 
+//Delete DA
+
+export async function deleteDA(daID) {
+  try {
+    return await sendRequest(`${BASE_URL}/deleteda`, "DELETE", daID);
+  } catch (error) {
+    console.error("error deleting DA", error);
+  }
+}
+
 //Flip DA status
 
 export async function flipStatus(DAID) {

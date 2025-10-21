@@ -35,7 +35,6 @@ export default function AddNote({
       <div className="EditWindowOverlay">
         <div className="EditWindow">
           <h1>Add Note to {selectedVehicle.name}</h1>
-          <h3>Write your note for {selectedVehicle.name}</h3>
           <textarea
             className="NoteInput"
             type="text"

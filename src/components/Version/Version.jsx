@@ -1,8 +1,16 @@
 import { motion, AnimatePresence } from "motion/react";
 import "./Version.css";
-import Footer from "../Footer/Footer";
 
 const releases = [
+  {
+    version: "1.41",
+    date: "October 21, 2025",
+    notes: [
+      "removed redundant headers for edit windows",
+      "fixed zooming behavior on mobile devices",
+      "added ability to delete DAs from schedule",
+    ],
+  },
   {
     version: "1.4",
     date: "September 23, 2025",
