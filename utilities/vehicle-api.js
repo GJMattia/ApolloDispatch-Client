@@ -24,6 +24,14 @@ export async function updateTire(tireInfo) {
   }
 }
 
+export async function updatePlate(plateInfo) {
+  try {
+    return await sendRequest(`${BASE_URL}/updateplate`, "PUT", plateInfo);
+  } catch (error) {
+    console.error("error updating plate", error);
+  }
+}
+
 export async function updateFluid(fluidInfo) {
   try {
     return await sendRequest(`${BASE_URL}/updatefluid`, "PUT", fluidInfo);
@@ -46,6 +54,18 @@ export async function updateInspection(inspectionInfo) {
       `${BASE_URL}/updateinspection`,
       "PUT",
       inspectionInfo
+    );
+  } catch (error) {
+    console.error("error updating drive status", error);
+  }
+}
+
+export async function updateRegistration(registrationInfo) {
+  try {
+    return await sendRequest(
+      `${BASE_URL}/updateregistration`,
+      "PUT",
+      registrationInfo
     );
   } catch (error) {
     console.error("error updating drive status", error);

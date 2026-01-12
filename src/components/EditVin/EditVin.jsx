@@ -48,6 +48,7 @@ export default function EditVin({
             <h4>Enter VIN</h4>
             <input
               className="VinInput"
+              minLength={4}
               maxLength={17}
               placeholder="Enter VIN"
               onChange={(e) => setVin(e.target.value)}

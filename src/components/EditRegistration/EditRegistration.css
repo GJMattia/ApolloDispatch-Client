@@ -1,0 +1,22 @@
+.EditRegistration {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.RegistrationInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.RegistrationInfo > h4 {
+  text-align: center;
+}
+
+.DateInput {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+}

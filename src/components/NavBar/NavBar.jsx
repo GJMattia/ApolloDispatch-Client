@@ -115,7 +115,7 @@ export default function NavBar({ user, setUser }) {
                   </>
                 )}
                 <li role="menuitem" onClick={() => go("/version")}>
-                  Version (v1.41)
+                  Version (v1.5)
                 </li>
               </ul>
             </motion.div>

@@ -3,6 +3,15 @@ import "./Version.css";
 
 const releases = [
   {
+    version: "1.5",
+    date: "January 12, 2026",
+    notes: [
+      "added sections for plate info and registration info",
+      "fixed refresh issue on schedule tab",
+      "moved vehicle status toggle",
+    ],
+  },
+  {
     version: "1.41",
     date: "October 21, 2025",
     notes: [

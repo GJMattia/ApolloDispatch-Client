@@ -56,11 +56,10 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  padding: 0.5rem;
-  box-sizing: border-box;
   border-radius: 0.5rem;
   border: 1px solid black;
   margin: 0.5rem;
+  padding: 0.5rem;
   background-color: #020c1a;
 }
 
@@ -87,7 +86,11 @@
 .VehicleName {
   position: relative;
   top: 1rem;
-  user-select: none;
+  cursor: pointer;
+}
+
+.VehicleName:hover {
+  color: dodgerblue;
 }
 
 .VehicleType {
@@ -136,7 +139,7 @@
 
 .NotesBtn {
   box-sizing: border-box;
-  background-color: #020c1a;
+  background-color: transparent;
   color: white;
   border: 1px solid gray;
   width: 40%;
@@ -225,6 +228,10 @@
 }
 .Grounded:hover {
   background-color: darkred;
+}
+
+.Caution {
+  color: gold;
 }
 
 .MetricsWindow {

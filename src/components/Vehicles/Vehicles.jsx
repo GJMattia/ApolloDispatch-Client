@@ -7,6 +7,7 @@ import EditTires from "../EditTires/EditTires.jsx";
 import EditFluid from "../EditFluid/EditFluid.jsx";
 import EditStatus from "../EditStatus/EditStatus.jsx";
 import EditInspection from "../EditInspection/EditInspection.jsx";
+import EditRegistration from "../EditRegistration/EditRegistration.jsx";
 import AddNote from "../AddNote/AddNote.jsx";
 import {
   getDateClass,
@@ -17,6 +18,7 @@ import Metrics from "../Metrics/Metrics.jsx";
 import DeleteNote from "../DeleteNote/DeleteNote.jsx";
 import EditNote from "../EditNote/EditNote.jsx";
 import EditVin from "../EditVin/EditVin.jsx";
+import EditPlate from "../EditPlate/EditPlate.jsx";
 
 export default function Vehicles() {
   //Vehicle Data
@@ -36,11 +38,13 @@ export default function Vehicles() {
   const [fluidWindow, setFluidWindow] = useState(false);
   const [statusWindow, setStatusWindow] = useState(false);
   const [inspectionWindow, setInspectionWindow] = useState(false);
+  const [registrationWindow, setRegistrationWindow] = useState(false);
   const [noteWindow, setNoteWindow] = useState(false);
   const [deleteNoteWindow, setDeleteNoteWindow] = useState(false);
   const [editNoteWindow, setEditNoteWindow] = useState(false);
   const [metricsWindow, setMetricsWindow] = useState(false);
   const [vinWindow, setVinWindow] = useState(false);
+  const [plateWindow, setPlateWindow] = useState(false);
 
   // NEW: simple tire filter toggle
   const [filters, setFilters] = useState({
@@ -183,6 +187,14 @@ export default function Vehicles() {
         />
       )}
 
+      {registrationWindow && (
+        <EditRegistration
+          setRegistrationWindow={setRegistrationWindow}
+          selectedVehicle={selectedVehicle}
+          setVehicles={setVehicles}
+        />
+      )}
+
       {noteWindow && (
         <AddNote
           setNoteWindow={setNoteWindow}
@@ -211,6 +223,14 @@ export default function Vehicles() {
         <EditVin
           selectedVehicle={selectedVehicle}
           setVinWindow={setVinWindow}
+          setVehicles={setVehicles}
+        />
+      )}
+
+      {plateWindow && (
+        <EditPlate
+          selectedVehicle={selectedVehicle}
+          setPlateWindow={setPlateWindow}
           setVehicles={setVehicles}
         />
       )}
@@ -278,7 +298,14 @@ export default function Vehicles() {
               >
                 <div className="VehicleContents">
                   <div className="VehicleInfo">
-                    <h1 className="VehicleName">{vehicle.name}</h1>
+                    <h1
+                      className={`VehicleName ${
+                        vehicle.status === 1 ? "Caution" : ""
+                      }`}
+                      onClick={() => setStatusWindow(true)}
+                    >
+                      {vehicle.name}
+                    </h1>
                     <h5 className="VehicleType">
                       {formatVehicleType(vehicle.type)}
                     </h5>
@@ -292,10 +319,11 @@ export default function Vehicles() {
                         >
                           VIN
                         </th>
+                        <th>Plate</th>
+                        <th>Registration</th>
                         <th>Inspection</th>
                         <th>T-Pressure</th>
                         <th>W-Fluid</th>
-                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -310,6 +338,37 @@ export default function Vehicles() {
                             </>
                           )}
                         </td>
+                        <td
+                          className="Clickable"
+                          onClick={() => setPlateWindow(true)}
+                        >
+                          {vehicle.plate}
+                        </td>
+
+                        <td
+                          onClick={() => setRegistrationWindow(true)}
+                          className={`${getDateClass(
+                            vehicle.registration
+                          )} Clickable`}
+                        >
+                          {vehicle.registration
+                            ? (() => {
+                                const date = new Date(vehicle.registration);
+                                const tenYearsAgo = new Date();
+                                tenYearsAgo.setFullYear(
+                                  tenYearsAgo.getFullYear() - 10
+                                );
+
+                                return date > tenYearsAgo
+                                  ? date.toLocaleDateString("en-US", {
+                                      month: "short",
+                                      year: "numeric",
+                                    })
+                                  : "N/A";
+                              })()
+                            : "N/A"}
+                        </td>
+
                         <td
                           onClick={() => setInspectionWindow(true)}
                           className={`${getDateClass(
@@ -329,9 +388,9 @@ export default function Vehicles() {
                                       month: "short",
                                       year: "numeric",
                                     })
-                                  : "No Sticker";
+                                  : "N/A";
                               })()
-                            : "No Sticker"}
+                            : "N/A"}
                         </td>
                         <td
                           className="Clickable"
@@ -344,16 +403,6 @@ export default function Vehicles() {
                           onClick={() => setFluidWindow(true)}
                         >
                           {vehicle.fluid ? "✅" : "❌"}
-                        </td>
-                        <td
-                          className="Clickable"
-                          onClick={() => setStatusWindow(true)}
-                        >
-                          {vehicle.status === 0
-                            ? "✅"
-                            : vehicle.status === 1
-                            ? "⚠️"
-                            : "❌"}
                         </td>
                       </tr>
                     </tbody>

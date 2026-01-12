@@ -31,7 +31,7 @@ export default function EditStatus({
   return (
     <div className="EditWindowOverlay">
       <div className="EditWindow">
-        <h1>Update drive status for {selectedVehicle.name}</h1>
+        <h1>Update status for {selectedVehicle.name}</h1>
 
         <div className="Tire">
           <h1
