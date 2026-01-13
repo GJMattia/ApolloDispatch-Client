@@ -12,11 +12,16 @@ export default function DeleteNote({
         vehicleId: selectedNote.vehicleId,
         noteIndex: selectedNote.noteIndex,
       });
+
       setVehicles((prev) =>
         prev.map((v) => {
           if (v._id !== response.vehicleId) return v;
+
           return {
             ...v,
+
+            updatedAt: response.updatedAt,
+
             notes: v.notes.filter((_, i) => i !== response.noteIndex),
           };
         })

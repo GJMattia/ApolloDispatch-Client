@@ -24,4 +24,16 @@
     grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
     gap: 0.5rem;
   }
+
+  .Limit {
+    display: none;
+  }
+
+  .FilterSelect {
+    width: 100%;
+  }
+
+  .Small {
+    width: 60%;
+  }
 }

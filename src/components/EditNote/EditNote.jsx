@@ -17,17 +17,22 @@ export default function EditNote({
         editedNote: note,
       });
 
+      console.log(response);
+
       setVehicles((prev) =>
         prev.map((v) => {
           if (v._id !== response.vehicleId) return v;
 
           return {
             ...v,
+            updatedAt: response.updatedAt,
             notes: v.notes.map((n, i) =>
               i === response.noteIndex
-                ? typeof n === "object" && n !== null
-                  ? { ...n, text: response.editedNote }
-                  : response.editedNote
+                ? {
+                    ...(typeof n === "object" && n !== null ? n : { text: n }),
+                    text: response.editedNote,
+                    updatedAt: response.updatedAt,
+                  }
                 : n
             ),
           };

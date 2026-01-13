@@ -19,7 +19,7 @@ export default function AddNote({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, notes: response.notes }
+            ? { ...v, notes: response.notes, updatedAt: response.updatedAt }
             : v
         )
       );

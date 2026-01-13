@@ -18,7 +18,7 @@ export default function EditVin({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, vin: response.vin }
+            ? { ...v, vin: response.vin, updatedAt: response.updatedAt }
             : v
         )
       );

@@ -19,7 +19,7 @@ export default function EditTires({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, tire: response.tire }
+            ? { ...v, tire: response.tire, updatedAt: response.updatedAt }
             : v
         )
       );

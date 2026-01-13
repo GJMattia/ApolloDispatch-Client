@@ -12,6 +12,7 @@ import AddNote from "../AddNote/AddNote.jsx";
 import {
   getDateClass,
   formatVehicleType,
+  formatDateRegular,
 } from "../../../utilities/helpful-functions.js";
 import Sorter from "../Sorter/Sorter.jsx";
 import Metrics from "../Metrics/Metrics.jsx";
@@ -307,9 +308,12 @@ export default function Vehicles() {
                       {vehicle.name}
                     </h1>
                     <h5 className="VehicleType">
-                      {formatVehicleType(vehicle.type)}
+                      {formatVehicleType(vehicle.type)}{" "}
                     </h5>
                   </div>
+                  <h5 className="VehicleUpdated">
+                    Updated: {formatDateRegular(vehicle.updatedAt)}
+                  </h5>
                   <table className="VehicleTable">
                     <thead>
                       <tr>
@@ -322,8 +326,8 @@ export default function Vehicles() {
                         <th>Plate</th>
                         <th>Registration</th>
                         <th>Inspection</th>
-                        <th>T-Pressure</th>
-                        <th>W-Fluid</th>
+                        <th>TP</th>
+                        <th>WF</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -503,7 +507,7 @@ export default function Vehicles() {
                         onClick={() => setNoteWindow(true)}
                         className="Add"
                       >
-                        add note
+                        +
                       </button>
                     </motion.div>
                   )}

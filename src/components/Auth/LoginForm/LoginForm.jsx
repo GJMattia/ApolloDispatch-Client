@@ -64,6 +64,7 @@ export default function LoginForm({ setUser }) {
           Log in
         </button>
       </form>
+      <p className="Red">{error}</p>
     </div>
   );
 }

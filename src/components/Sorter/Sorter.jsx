@@ -19,7 +19,7 @@ export default function Sorter({ filters, onChange, sortBy, setSortBy }) {
       </li>
       {/* Sorter */}
       <select
-        className="FilterSelect"
+        className="FilterSelect Limit"
         value={sortBy}
         onChange={(e) => setSortBy(e.target.value)}
       >
@@ -65,7 +65,7 @@ export default function Sorter({ filters, onChange, sortBy, setSortBy }) {
       {/* Status Filter */}
       <li>
         <select
-          className="FilterSelect"
+          className="FilterSelect Small"
           value={filters.status}
           onChange={(e) =>
             onChange((f) => ({

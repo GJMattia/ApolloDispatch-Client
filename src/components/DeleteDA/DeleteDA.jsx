@@ -27,7 +27,7 @@ export default function DeleteDA({
 
         <h2 className="DeleteDAInfo">
           {" "}
-          {selectedDA.name}: {selectedDA.title}
+          {selectedDA.title}: {selectedDA.name}
         </h2>
 
         <div className="SettingsBtns">

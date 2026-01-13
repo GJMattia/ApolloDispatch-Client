@@ -19,7 +19,7 @@ export default function EditFluid({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, fluid: response.fluid }
+            ? { ...v, fluid: response.fluid, updatedAt: response.updatedAt }
             : v
         )
       );

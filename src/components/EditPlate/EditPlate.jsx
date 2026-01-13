@@ -72,7 +72,7 @@ export default function EditPlate({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, plate: response.plate }
+            ? { ...v, plate: response.plate, updatedAt: response.updatedAt }
             : v
         )
       );

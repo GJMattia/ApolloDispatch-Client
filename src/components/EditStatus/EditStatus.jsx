@@ -19,7 +19,7 @@ export default function EditStatus({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, status: response.status }
+            ? { ...v, status: response.status, updatedAt: response.updatedAt }
             : v
         )
       );

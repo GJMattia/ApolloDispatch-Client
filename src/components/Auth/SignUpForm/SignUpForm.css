@@ -36,7 +36,6 @@
 }
 
 .SignUpBtn {
-  box-sizing: border-box;
   border-radius: 0.2rem;
   font-size: 1rem;
   border: none;
@@ -56,7 +55,6 @@
   width: 90%;
   border-top: 1px solid #3e4759;
   text-align: center;
-  box-sizing: border-box;
   padding-top: 1rem;
   margin-bottom: 0;
 }

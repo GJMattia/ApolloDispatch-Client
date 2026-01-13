@@ -22,7 +22,11 @@ export default function EditRegistration({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, registration: response.registration }
+            ? {
+                ...v,
+                registration: response.registration,
+                updatedAt: response.updatedAt,
+              }
             : v
         )
       );

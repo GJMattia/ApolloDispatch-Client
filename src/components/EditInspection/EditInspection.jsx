@@ -20,7 +20,11 @@ export default function EditInspection({
       setVehicles((prev) =>
         prev.map((v) =>
           v._id === response.id || v.id === response.id
-            ? { ...v, inspection: response.inspection }
+            ? {
+                ...v,
+                inspection: response.inspection,
+                updatedAt: response.updatedAt,
+              }
             : v
         )
       );
