@@ -73,6 +73,11 @@ ul {
   cursor: text;
 }
 
+.DeleteActive {
+  color: white;
+  background-color: crimson;
+}
+
 .SettingsBox {
   display: flex;
   flex-direction: column;

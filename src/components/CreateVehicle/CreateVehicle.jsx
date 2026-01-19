@@ -5,8 +5,8 @@ import { createVehicle } from "../../../utilities/vehicle-api";
 export default function CreateVehicle({ setCreateWindow, setVehicles }) {
   const [formData, setFormData] = useState({
     name: "",
-    vin: "",
-    inspection: "",
+    vin: "#VIN",
+    inspection: null,
     type: "",
   });
 
@@ -32,7 +32,7 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
     <div className="EditWindowOverlay">
       <div className="EditWindow">
         <h1>Create Vehicle</h1>
-
+        <h3>All vehicle information will be available after creation.</h3>
         <input
           className="CreateInput"
           placeholder="Vehicle Name"
@@ -42,23 +42,23 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
           maxLength={15}
         />
 
-        <input
+        {/* <input
           className="CreateInput"
           placeholder="VIN"
           name="vin"
           value={formData.vin}
           onChange={handleChange}
           maxLength={17}
-        />
+        /> */}
 
-        <input
+        {/* <input
           type="date"
           className="CreateInput"
           placeholder="Inspection Expiration"
           name="inspection"
           value={formData.inspection}
           onChange={handleChange}
-        />
+        /> */}
 
         <select
           className="CreateInput"

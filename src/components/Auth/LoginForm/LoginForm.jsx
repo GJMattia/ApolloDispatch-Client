@@ -38,7 +38,7 @@ export default function LoginForm({ setUser }) {
         <input
           placeholder="Email address"
           minLength="5"
-          maxLength="20"
+          maxLength="30"
           type="text"
           name="email"
           value={credentials.email}
@@ -48,7 +48,7 @@ export default function LoginForm({ setUser }) {
         <input
           placeholder="Password"
           minLength="5"
-          maxLength="20"
+          maxLength="30"
           type="password"
           name="password"
           value={credentials.password}

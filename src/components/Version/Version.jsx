@@ -3,19 +3,17 @@ import "./Version.css";
 
 const releases = [
   {
-    version: "1.5",
-    date: "January 13, 2026",
+    version: "0.50",
+    date: "January 19, 2026",
     notes: [
-      "Added the last time a vehicle was updated",
-      "Added wrong password notification",
-      "Fixed various CSS issues on a few different pages",
-      "added sections for plate info and registration info",
-      "fixed refresh issue on schedule tab",
-      "moved vehicle status toggle and add note button",
+      "Changed version format",
+      "Added delete vehicle functionality",
+      "Increased allowed characters for usernames and passwords in input fields",
+      "Fixed style issue on schedule page",
     ],
   },
   {
-    version: "1.41",
+    version: "0.45",
     date: "October 21, 2025",
     notes: [
       "removed redundant headers for edit windows",
@@ -24,7 +22,7 @@ const releases = [
     ],
   },
   {
-    version: "1.4",
+    version: "0.40",
     date: "September 23, 2025",
     notes: [
       "added full VIN display for desktop",
@@ -36,7 +34,7 @@ const releases = [
     ],
   },
   {
-    version: "1.3",
+    version: "0.30",
     date: "September 18, 2025",
     notes: [
       "added schedule feature",
@@ -44,7 +42,7 @@ const releases = [
     ],
   },
   {
-    version: "1.2",
+    version: "0.25",
     date: "September 7, 2025",
     notes: [
       "condensed sorters/search into one",
@@ -52,7 +50,7 @@ const releases = [
     ],
   },
   {
-    version: "1.1",
+    version: "0.20",
     date: "September 2, 2025",
     notes: [
       "Added sorter for the vehicle list, places grounded vehicles at top of list",
@@ -64,7 +62,7 @@ const releases = [
     ],
   },
   {
-    version: "1.0",
+    version: "0.10",
     date: "August 18, 2025",
     notes: [
       "Implemented account creation and sign-in functionality",

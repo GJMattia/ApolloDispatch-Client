@@ -20,6 +20,7 @@ import DeleteNote from "../DeleteNote/DeleteNote.jsx";
 import EditNote from "../EditNote/EditNote.jsx";
 import EditVin from "../EditVin/EditVin.jsx";
 import EditPlate from "../EditPlate/EditPlate.jsx";
+import DeleteVehicle from "../DeleteVehicle/DeleteVehicle.jsx";
 
 export default function Vehicles() {
   //Vehicle Data
@@ -46,6 +47,10 @@ export default function Vehicles() {
   const [metricsWindow, setMetricsWindow] = useState(false);
   const [vinWindow, setVinWindow] = useState(false);
   const [plateWindow, setPlateWindow] = useState(false);
+  const [deleteVehicleWindow, setDeleteVehicleWindow] = useState(false);
+
+  //Delete Toggle
+  const [deleteBtn, setDeleteBtn] = useState(false);
 
   // NEW: simple tire filter toggle
   const [filters, setFilters] = useState({
@@ -153,6 +158,14 @@ export default function Vehicles() {
       {createWindow && (
         <CreateVehicle
           setCreateWindow={setCreateWindow}
+          setVehicles={setVehicles}
+        />
+      )}
+
+      {deleteVehicleWindow && (
+        <DeleteVehicle
+          selectedVehicle={selectedVehicle}
+          setDeleteVehicleWindow={setDeleteVehicleWindow}
           setVehicles={setVehicles}
         />
       )}
@@ -281,12 +294,19 @@ export default function Vehicles() {
       <button className="CreateBtn" onClick={() => setCreateWindow(true)}>
         +
       </button>
+
+      <button
+        className={`EditBtn ${deleteBtn ? "DeleteActive" : ""}`}
+        onClick={() => setDeleteBtn(!deleteBtn)}
+      >
+        -
+      </button>
       {visibleVehicles && visibleVehicles.length > 0 ? (
         <ul className="VehicleList">
           <AnimatePresence initial={false}>
             {visibleVehicles.map((vehicle) => (
               <motion.li
-                key={vehicle._id} // stable key = smoother exits
+                key={vehicle._id}
                 layout
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -314,6 +334,16 @@ export default function Vehicles() {
                   <h5 className="VehicleUpdated">
                     Updated: {formatDateRegular(vehicle.updatedAt)}
                   </h5>
+
+                  {deleteBtn && (
+                    <button
+                      className="DeleteVehicleBtn"
+                      onClick={() => setDeleteVehicleWindow(true)}
+                    >
+                      DELETE VEHICLE
+                    </button>
+                  )}
+
                   <table className="VehicleTable">
                     <thead>
                       <tr>

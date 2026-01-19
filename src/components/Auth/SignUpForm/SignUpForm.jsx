@@ -41,7 +41,7 @@ export default function SignUpForm({ setUser }) {
       <form className="SignUpForm" autoComplete="off" onSubmit={handleSubmit}>
         <input
           minLength="3"
-          maxLength="20"
+          maxLength="30"
           placeholder="Enter your DSP name"
           type="text"
           name="name"
@@ -62,7 +62,7 @@ export default function SignUpForm({ setUser }) {
         </label>
         <input
           minLength="5"
-          maxLength="20"
+          maxLength="30"
           placeholder="Your email address"
           type="email"
           name="email"
@@ -85,7 +85,7 @@ export default function SignUpForm({ setUser }) {
         </label>
         <input
           minLength="6"
-          maxLength="20"
+          maxLength="30"
           placeholder="Create a password"
           type="password"
           name="password"
@@ -102,11 +102,11 @@ export default function SignUpForm({ setUser }) {
               : "Green"
           }
         >
-          Password must be 6 characters long
+          Password must be 6 characters long minimum
         </label>
         <input
           minLength="6"
-          maxLength="20"
+          maxLength="30"
           placeholder="Confirm your password"
           type="password"
           name="confirm"

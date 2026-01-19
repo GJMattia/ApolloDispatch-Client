@@ -16,6 +16,14 @@ export async function createVehicle(content) {
   }
 }
 
+export async function deleteVehicle(vehicleID) {
+  try {
+    return await sendRequest(`${BASE_URL}/deletevehicle`, "DELETE", vehicleID);
+  } catch (error) {
+    console.error("error deleting vehicle", error);
+  }
+}
+
 export async function updateTire(tireInfo) {
   try {
     return await sendRequest(`${BASE_URL}/updatetire`, "PUT", tireInfo);

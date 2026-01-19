@@ -63,6 +63,10 @@
 }
 
 .ScheduleBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   border-radius: 0.2rem;
   border: none;
   width: 7rem;
@@ -86,11 +90,6 @@
 .DAdeleteBtn:hover {
   cursor: pointer;
   background-color: darkred;
-}
-
-.DeleteActive {
-  color: white;
-  background-color: crimson;
 }
 
 @media (max-width: 1100px) {

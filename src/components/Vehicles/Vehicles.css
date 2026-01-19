@@ -218,15 +218,53 @@
   background-color: #020c1a;
   border: none;
   border-radius: 0.5rem;
-  padding: 1rem;
-  margin-top: 1rem;
   color: white;
   z-index: 9000;
+  width: 2rem;
+  height: 2rem;
+  top: 5rem;
   right: 1rem;
   cursor: pointer;
 }
 
 .CreateBtn:hover {
+  background-color: dodgerblue;
+}
+
+.DeleteVehicleBtn {
+  width: 15%;
+  border-radius: 0.2rem;
+  font-weight: 900;
+  color: white;
+  border: none;
+  padding: 0.3rem;
+  bottom: 0.5rem;
+  position: absolute;
+  background-color: crimson;
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.DeleteVehicleBtn:hover {
+  border: 1px solid white;
+  background-color: darkred;
+}
+
+.EditBtn {
+  position: absolute;
+  background-color: #020c1a;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  z-index: 9000;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  top: 8rem;
+  cursor: pointer;
+}
+
+.EditBtn:hover {
   background-color: dodgerblue;
 }
 
@@ -318,6 +356,15 @@
   .CreateBtn {
     display: none;
   }
+
+  .EditBtn {
+    display: none;
+  }
+
+  .DeleteVehicleBtn {
+    display: none;
+  }
+
   .MetricsWindow {
     display: none;
   }
