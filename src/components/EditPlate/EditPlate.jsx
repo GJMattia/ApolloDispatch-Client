@@ -2,11 +2,7 @@ import "./EditPlate.css";
 import { useState } from "react";
 import { updatePlate } from "../../../utilities/vehicle-api.js";
 
-export default function EditPlate({
-  selectedVehicle,
-  setPlateWindow,
-  setVehicles,
-}) {
+export default function EditPlate({ selectedVehicle, setWindow, setVehicles }) {
   const states = [
     "AL",
     "AK",
@@ -73,11 +69,11 @@ export default function EditPlate({
         prev.map((v) =>
           v._id === response.id || v.id === response.id
             ? { ...v, plate: response.plate, updatedAt: response.updatedAt }
-            : v
-        )
+            : v,
+        ),
       );
 
-      setPlateWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating plate date", error);
     }
@@ -118,10 +114,7 @@ export default function EditPlate({
           </div>
         </div>
         <div className="SettingsBtns">
-          <button
-            onClick={() => setPlateWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handlePlate} className="SettingsBtn">

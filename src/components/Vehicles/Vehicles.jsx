@@ -34,22 +34,93 @@ export default function Vehicles() {
   const deferredSearch = useDeferredValue(search);
   const [sortBy, setSortBy] = useState("");
 
-  //Edit Windows
-  const [createWindow, setCreateWindow] = useState(false);
-  const [tireWindow, setTireWindow] = useState(false);
-  const [fluidWindow, setFluidWindow] = useState(false);
-  const [statusWindow, setStatusWindow] = useState(false);
-  const [inspectionWindow, setInspectionWindow] = useState(false);
-  const [registrationWindow, setRegistrationWindow] = useState(false);
-  const [noteWindow, setNoteWindow] = useState(false);
-  const [deleteNoteWindow, setDeleteNoteWindow] = useState(false);
-  const [editNoteWindow, setEditNoteWindow] = useState(false);
+  //Window toggles
+  const [window, setWindow] = useState(0);
   const [metricsWindow, setMetricsWindow] = useState(false);
-  const [vinWindow, setVinWindow] = useState(false);
-  const [plateWindow, setPlateWindow] = useState(false);
-  const [deleteVehicleWindow, setDeleteVehicleWindow] = useState(false);
 
-  //Delete Toggle
+  const windows = {
+    1: () => <CreateVehicle setWindow={setWindow} setVehicles={setVehicles} />,
+    2: () => (
+      <DeleteVehicle
+        selectedVehicle={selectedVehicle}
+        setWindow={setWindow}
+        setVehicles={setVehicles}
+      />
+    ),
+    3: () => (
+      <EditVin
+        selectedVehicle={selectedVehicle}
+        setWindow={setWindow}
+        setVehicles={setVehicles}
+      />
+    ),
+    4: () => (
+      <EditPlate
+        selectedVehicle={selectedVehicle}
+        setWindow={setWindow}
+        setVehicles={setVehicles}
+      />
+    ),
+    5: () => (
+      <EditRegistration
+        setWindow={setWindow}
+        selectedVehicle={selectedVehicle}
+        setVehicles={setVehicles}
+      />
+    ),
+    6: () => (
+      <EditInspection
+        setWindow={setWindow}
+        selectedVehicle={selectedVehicle}
+        setVehicles={setVehicles}
+      />
+    ),
+    7: () => (
+      <EditTires
+        setWindow={setWindow}
+        selectedVehicle={selectedVehicle}
+        setVehicles={setVehicles}
+      />
+    ),
+    8: () => (
+      <EditFluid
+        setWindow={setWindow}
+        selectedVehicle={selectedVehicle}
+        setVehicles={setVehicles}
+      />
+    ),
+    9: () => (
+      <EditStatus
+        setWindow={setWindow}
+        selectedVehicle={selectedVehicle}
+        setVehicles={setVehicles}
+      />
+    ),
+    10: () => (
+      <AddNote
+        setWindow={setWindow}
+        selectedVehicle={selectedVehicle}
+        setVehicles={setVehicles}
+      />
+    ),
+    11: () => (
+      <EditNote
+        selectedNote={selectedNote}
+        setWindow={setWindow}
+        setVehicles={setVehicles}
+      />
+    ),
+    12: () => (
+      <DeleteNote
+        selectedNote={selectedNote}
+        setWindow={setWindow}
+        setVehicles={setVehicles}
+      />
+    ),
+  };
+  const activeWindow = windows[window];
+
+  //Delete Vehicle Toggle
   const [deleteBtn, setDeleteBtn] = useState(false);
 
   // NEW: simple tire filter toggle
@@ -131,16 +202,6 @@ export default function Vehicles() {
     setSelectedVehicle(vehicle);
   }
 
-  function handleDeleteNote(vehicleId, vehicleName, noteContent, noteIndex) {
-    setSelectedNote({
-      vehicleId,
-      vehicleName,
-      noteContent,
-      noteIndex,
-    });
-    setDeleteNoteWindow(true);
-  }
-
   function handleEditNote(vehicleId, vehicleName, noteContent, noteIndex) {
     setSelectedNote({
       vehicleId,
@@ -148,106 +209,32 @@ export default function Vehicles() {
       noteContent,
       noteIndex,
     });
-    setEditNoteWindow(true);
+    setWindow(11);
+  }
+
+  function handleDeleteNote(vehicleId, vehicleName, noteContent, noteIndex) {
+    setSelectedNote({
+      vehicleId,
+      vehicleName,
+      noteContent,
+      noteIndex,
+    });
+    setWindow(12);
   }
 
   return (
     <div className="Vehicles">
-      {/* Quick filter button */}
+      {activeWindow && activeWindow()}
+      <button className="CreateBtn" onClick={() => setWindow(1)}>
+        +
+      </button>
 
-      {createWindow && (
-        <CreateVehicle
-          setCreateWindow={setCreateWindow}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {deleteVehicleWindow && (
-        <DeleteVehicle
-          selectedVehicle={selectedVehicle}
-          setDeleteVehicleWindow={setDeleteVehicleWindow}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {tireWindow && (
-        <EditTires
-          setTireWindow={setTireWindow}
-          selectedVehicle={selectedVehicle}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {fluidWindow && (
-        <EditFluid
-          setFluidWindow={setFluidWindow}
-          selectedVehicle={selectedVehicle}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {statusWindow && (
-        <EditStatus
-          setStatusWindow={setStatusWindow}
-          selectedVehicle={selectedVehicle}
-          setVehicles={setVehicles}
-        />
-      )}
-      {inspectionWindow && (
-        <EditInspection
-          setInspectionWindow={setInspectionWindow}
-          selectedVehicle={selectedVehicle}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {registrationWindow && (
-        <EditRegistration
-          setRegistrationWindow={setRegistrationWindow}
-          selectedVehicle={selectedVehicle}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {noteWindow && (
-        <AddNote
-          setNoteWindow={setNoteWindow}
-          selectedVehicle={selectedVehicle}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {deleteNoteWindow && (
-        <DeleteNote
-          selectedNote={selectedNote}
-          setDeleteNoteWindow={setDeleteNoteWindow}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {editNoteWindow && (
-        <EditNote
-          selectedNote={selectedNote}
-          setEditNoteWindow={setEditNoteWindow}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {vinWindow && (
-        <EditVin
-          selectedVehicle={selectedVehicle}
-          setVinWindow={setVinWindow}
-          setVehicles={setVehicles}
-        />
-      )}
-
-      {plateWindow && (
-        <EditPlate
-          selectedVehicle={selectedVehicle}
-          setPlateWindow={setPlateWindow}
-          setVehicles={setVehicles}
-        />
-      )}
+      <button
+        className={`EditBtn ${deleteBtn ? "DeleteActive" : ""}`}
+        onClick={() => setDeleteBtn(!deleteBtn)}
+      >
+        -
+      </button>
 
       <div className="MetricsWindow">
         <button
@@ -291,16 +278,6 @@ export default function Vehicles() {
         <h4 className="SearchResults">Results: {visibleVehicles.length}</h4>
       </div>
 
-      <button className="CreateBtn" onClick={() => setCreateWindow(true)}>
-        +
-      </button>
-
-      <button
-        className={`EditBtn ${deleteBtn ? "DeleteActive" : ""}`}
-        onClick={() => setDeleteBtn(!deleteBtn)}
-      >
-        -
-      </button>
       {visibleVehicles && visibleVehicles.length > 0 ? (
         <ul className="VehicleList">
           <AnimatePresence initial={false}>
@@ -323,7 +300,7 @@ export default function Vehicles() {
                       className={`VehicleName ${
                         vehicle.status === 1 ? "Caution" : ""
                       }`}
-                      onClick={() => setStatusWindow(true)}
+                      onClick={() => setWindow(9)}
                     >
                       {vehicle.name}
                     </h1>
@@ -338,7 +315,7 @@ export default function Vehicles() {
                   {deleteBtn && (
                     <button
                       className="DeleteVehicleBtn"
-                      onClick={() => setDeleteVehicleWindow(true)}
+                      onClick={() => setWindow(2)}
                     >
                       DELETE VEHICLE
                     </button>
@@ -347,10 +324,7 @@ export default function Vehicles() {
                   <table className="VehicleTable">
                     <thead>
                       <tr>
-                        <th
-                          className="Clickable"
-                          onClick={() => setVinWindow(true)}
-                        >
+                        <th className="Clickable" onClick={() => setWindow(3)}>
                           VIN
                         </th>
                         <th>Plate</th>
@@ -372,17 +346,14 @@ export default function Vehicles() {
                             </>
                           )}
                         </td>
-                        <td
-                          className="Clickable"
-                          onClick={() => setPlateWindow(true)}
-                        >
+                        <td className="Clickable" onClick={() => setWindow(4)}>
                           {vehicle.plate}
                         </td>
 
                         <td
-                          onClick={() => setRegistrationWindow(true)}
+                          onClick={() => setWindow(5)}
                           className={`${getDateClass(
-                            vehicle.registration
+                            vehicle.registration,
                           )} Clickable`}
                         >
                           {vehicle.registration
@@ -390,7 +361,7 @@ export default function Vehicles() {
                                 const date = new Date(vehicle.registration);
                                 const tenYearsAgo = new Date();
                                 tenYearsAgo.setFullYear(
-                                  tenYearsAgo.getFullYear() - 10
+                                  tenYearsAgo.getFullYear() - 10,
                                 );
 
                                 return date > tenYearsAgo
@@ -404,9 +375,9 @@ export default function Vehicles() {
                         </td>
 
                         <td
-                          onClick={() => setInspectionWindow(true)}
+                          onClick={() => setWindow(6)}
                           className={`${getDateClass(
-                            vehicle.inspection
+                            vehicle.inspection,
                           )} Clickable`}
                         >
                           {vehicle.inspection
@@ -414,7 +385,7 @@ export default function Vehicles() {
                                 const date = new Date(vehicle.inspection);
                                 const tenYearsAgo = new Date();
                                 tenYearsAgo.setFullYear(
-                                  tenYearsAgo.getFullYear() - 10
+                                  tenYearsAgo.getFullYear() - 10,
                                 );
 
                                 return date > tenYearsAgo
@@ -426,16 +397,10 @@ export default function Vehicles() {
                               })()
                             : "N/A"}
                         </td>
-                        <td
-                          className="Clickable"
-                          onClick={() => setTireWindow(true)}
-                        >
+                        <td className="Clickable" onClick={() => setWindow(7)}>
                           {vehicle.tire ? "✅" : "❌"}
                         </td>
-                        <td
-                          className="Clickable"
-                          onClick={() => setFluidWindow(true)}
-                        >
+                        <td className="Clickable" onClick={() => setWindow(8)}>
                           {vehicle.fluid ? "✅" : "❌"}
                         </td>
                       </tr>
@@ -465,11 +430,11 @@ export default function Vehicles() {
                                   const d = new Date(note.createdAt);
                                   const mm = String(d.getMonth() + 1).padStart(
                                     2,
-                                    "0"
+                                    "0",
                                   );
                                   const dd = String(d.getDate()).padStart(
                                     2,
-                                    "0"
+                                    "0",
                                   );
                                   const yy = String(d.getFullYear()).slice(-2);
 
@@ -500,7 +465,7 @@ export default function Vehicles() {
                                         vehicle._id,
                                         vehicle.name,
                                         noteText,
-                                        i
+                                        i,
                                       )
                                     }
                                     className="NoteBtn"
@@ -513,7 +478,7 @@ export default function Vehicles() {
                                         vehicle._id,
                                         vehicle.name,
                                         noteText,
-                                        i
+                                        i,
                                       )
                                     }
                                     className="NoteBtn"
@@ -533,10 +498,7 @@ export default function Vehicles() {
                         </ul>
                       )}
 
-                      <button
-                        onClick={() => setNoteWindow(true)}
-                        className="Add"
-                      >
+                      <button onClick={() => setWindow(10)} className="Add">
                         +
                       </button>
                     </motion.div>
@@ -551,7 +513,7 @@ export default function Vehicles() {
                   onClick={(e) => {
                     e.stopPropagation();
                     setOpenNotesId((prev) =>
-                      prev === vehicle._id ? null : vehicle._id
+                      prev === vehicle._id ? null : vehicle._id,
                     );
                   }}
                 >

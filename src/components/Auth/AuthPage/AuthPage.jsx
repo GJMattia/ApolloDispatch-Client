@@ -3,6 +3,7 @@ import SignUpForm from "../SignUpForm/SignUpForm";
 import LoginForm from "../LoginForm/LoginForm";
 import ForgotPW from "../ForgotPW/ForgotPW";
 import "./AuthPage.css";
+import Footer from "../../Footer/Footer.jsx";
 
 export default function AuthPage({ setUser }) {
   const [auth, setAuth] = useState(0);
@@ -23,6 +24,8 @@ export default function AuthPage({ setUser }) {
           {auth === 2 ? "Remember? Sign In" : "Forgot Password?"}
         </p>
       )}
+
+      <Footer />
     </div>
   );
 }

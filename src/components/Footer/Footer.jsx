@@ -5,7 +5,7 @@ export default function Footer() {
   const navigate = useNavigate();
   return (
     <footer className="Footer">
-      <p onClick={() => navigate("/version")}>v1.3</p>
+      <p onClick={() => navigate("/version")}>v0.55</p>
     </footer>
   );
 }

@@ -34,14 +34,32 @@ export default function SignUpForm({ setUser }) {
     }
   };
 
-  const disable = formData.password !== formData.confirm;
+  const passwordsMatch =
+    formData.password.length > 0 &&
+    formData.confirm.length > 0 &&
+    formData.password === formData.confirm;
 
   return (
-    <>
+    <div className="SignUpPage">
+      <h1 className="Logo">Apollo Dispatch</h1>
+      <p className="Grey2">
+        Enter your information below to create an account.
+      </p>
       <form className="SignUpForm" autoComplete="off" onSubmit={handleSubmit}>
+        <label
+          className={
+            formData.name.length === 0
+              ? "Grey"
+              : formData.name.length > 0 && formData.name.length < 3
+                ? "Red"
+                : "Green"
+          }
+        >
+          Username must be at least 3 characters long
+        </label>
         <input
           minLength="3"
-          maxLength="30"
+          maxLength="40"
           placeholder="Enter your DSP name"
           type="text"
           name="name"
@@ -51,18 +69,21 @@ export default function SignUpForm({ setUser }) {
         />
         <label
           className={
-            formData.name.length === 0
+            formData.email.length === 0
               ? "Grey"
-              : formData.name.length > 0 && formData.name.length < 3
-              ? "Red"
-              : "Green"
+              : !formData.email.includes("@")
+                ? "Red"
+                : !/(\.com|\.net)$/.test(formData.email)
+                  ? "Red"
+                  : "Green"
           }
         >
-          Username must be at least 3 characters long
+          Please Enter a valid Email
         </label>
+
         <input
           minLength="5"
-          maxLength="30"
+          maxLength="40"
           placeholder="Your email address"
           type="email"
           name="email"
@@ -72,20 +93,18 @@ export default function SignUpForm({ setUser }) {
         />
         <label
           className={
-            formData.email.length === 0
+            formData.password.length === 0
               ? "Grey"
-              : !formData.email.includes("@")
-              ? "Red"
-              : !/(\.com|\.net)$/.test(formData.email)
-              ? "Red"
-              : "Green"
+              : formData.password.length < 6
+                ? "Red"
+                : "Green"
           }
         >
-          Please Enter a valid Email
+          Password must be 6 characters long minimum
         </label>
         <input
           minLength="6"
-          maxLength="30"
+          maxLength="40"
           placeholder="Create a password"
           type="password"
           name="password"
@@ -95,18 +114,18 @@ export default function SignUpForm({ setUser }) {
         />
         <label
           className={
-            formData.password.length === 0
+            formData.confirm.length === 0
               ? "Grey"
-              : formData.password.length < 6
-              ? "Red"
-              : "Green"
+              : formData.confirm !== formData.password
+                ? "Red"
+                : "Green"
           }
         >
-          Password must be 6 characters long minimum
+          Retype Password
         </label>
         <input
           minLength="6"
-          maxLength="30"
+          maxLength="40"
           placeholder="Confirm your password"
           type="password"
           name="confirm"
@@ -114,26 +133,15 @@ export default function SignUpForm({ setUser }) {
           onChange={handleChange}
           required
         />
-        <label
-          className={
-            formData.confirm.length === 0
-              ? "Grey"
-              : formData.confirm !== formData.password
-              ? "Red"
-              : "Green"
-          }
-        >
-          Retype Password
-        </label>
+
         <button
-          className={`SignUpBtn ${formData.password.length}`}
+          className={`SignUpBtn ${passwordsMatch ? "" : "NotYet"}`}
           type="submit"
-          disabled={disable}
         >
           Create My Account
         </button>
       </form>
       <p className="Error2">{formData.error}</p>
-    </>
+    </div>
   );
 }

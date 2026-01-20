@@ -2,11 +2,7 @@ import "./EditTires.css";
 import { updateTire } from "../../../utilities/vehicle-api";
 import { useState } from "react";
 
-export default function EditTires({
-  selectedVehicle,
-  setTireWindow,
-  setVehicles,
-}) {
+export default function EditTires({ selectedVehicle, setWindow, setVehicles }) {
   const [tire, setTire] = useState(selectedVehicle.tire);
 
   async function handleTire() {
@@ -20,10 +16,10 @@ export default function EditTires({
         prev.map((v) =>
           v._id === response.id || v.id === response.id
             ? { ...v, tire: response.tire, updatedAt: response.updatedAt }
-            : v
-        )
+            : v,
+        ),
       );
-      setTireWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating tire", error);
     }
@@ -48,10 +44,7 @@ export default function EditTires({
           </h1>
         </div>
         <div className="SettingsBtns">
-          <button
-            onClick={() => setTireWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleTire} className="SettingsBtn">

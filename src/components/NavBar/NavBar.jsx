@@ -62,7 +62,6 @@ export default function NavBar({ user, setUser }) {
         Apollo Dispatch
       </h3>
 
-      {/* Keep your inline Log Out / Sign In for desktop */}
       {user ? (
         <h4 className="LogOption" onClick={handleLogOut}>
           Log Out
@@ -73,11 +72,9 @@ export default function NavBar({ user, setUser }) {
         </h4>
       )}
 
-      {/* Animated dropdown + backdrop */}
       <AnimatePresence>
         {menu && (
           <>
-            {/* Backdrop (click to close) */}
             <motion.button
               className="NavBackdrop"
               onClick={() => setMenu(false)}
@@ -87,7 +84,6 @@ export default function NavBar({ user, setUser }) {
               exit={{ opacity: 0 }}
             />
 
-            {/* Dropdown panel that animates downward from the nav */}
             <motion.div
               id="nav-dropdown"
               ref={panelRef}

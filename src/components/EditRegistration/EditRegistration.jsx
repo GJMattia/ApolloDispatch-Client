@@ -5,11 +5,11 @@ import { updateRegistration } from "../../../utilities/vehicle-api.js";
 
 export default function EditRegistration({
   selectedVehicle,
-  setRegistrationWindow,
+  setWindow,
   setVehicles,
 }) {
   const [registration, setRegistration] = useState(
-    selectedVehicle.registration
+    selectedVehicle.registration,
   );
 
   async function handleRegistration() {
@@ -27,11 +27,11 @@ export default function EditRegistration({
                 registration: response.registration,
                 updatedAt: response.updatedAt,
               }
-            : v
-        )
+            : v,
+        ),
       );
 
-      setRegistrationWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating registration date", error);
     }
@@ -62,7 +62,7 @@ export default function EditRegistration({
                 {
                   month: "long",
                   year: "numeric",
-                }
+                },
               )}
             </h3>
           </div>
@@ -84,10 +84,7 @@ export default function EditRegistration({
           </div>
         </div>
         <div className="SettingsBtns">
-          <button
-            onClick={() => setRegistrationWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleRegistration} className="SettingsBtn">

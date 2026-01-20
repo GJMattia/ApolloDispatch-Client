@@ -31,14 +31,15 @@ export default function LoginForm({ setUser }) {
   return (
     <div className="LoginPage">
       <h1 className="Logo">Apollo Dispatch</h1>
-      <h1 className="LoginTitle">Log in</h1>
-      <p>Enter the email and password for your Apollo Dispatch.</p>
+      <p className="Grey2">
+        Enter the email and password for your account to log in.
+      </p>
 
       <form className="LoginForm" autoComplete="off" onSubmit={handleSubmit}>
         <input
           placeholder="Email address"
           minLength="5"
-          maxLength="30"
+          maxLength="40"
           type="text"
           name="email"
           value={credentials.email}
@@ -48,7 +49,7 @@ export default function LoginForm({ setUser }) {
         <input
           placeholder="Password"
           minLength="5"
-          maxLength="30"
+          maxLength="40"
           type="password"
           name="password"
           value={credentials.password}

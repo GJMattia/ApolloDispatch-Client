@@ -5,7 +5,7 @@ import { updateInspection } from "../../../utilities/vehicle-api.js";
 
 export default function EditInspection({
   selectedVehicle,
-  setInspectionWindow,
+  setWindow,
   setVehicles,
 }) {
   const [inspection, setInspection] = useState(selectedVehicle.inspection);
@@ -25,11 +25,11 @@ export default function EditInspection({
                 inspection: response.inspection,
                 updatedAt: response.updatedAt,
               }
-            : v
-        )
+            : v,
+        ),
       );
 
-      setInspectionWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating inspection date", error);
     }
@@ -60,7 +60,7 @@ export default function EditInspection({
                 {
                   month: "long",
                   year: "numeric",
-                }
+                },
               )}
             </h3>
           </div>
@@ -82,10 +82,7 @@ export default function EditInspection({
           </div>
         </div>
         <div className="SettingsBtns">
-          <button
-            onClick={() => setInspectionWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleInspection} className="SettingsBtn">

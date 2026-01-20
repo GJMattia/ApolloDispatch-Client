@@ -2,11 +2,7 @@ import "./EditVin.css";
 import { useState } from "react";
 import { updateVin } from "../../../utilities/vehicle-api.js";
 
-export default function EditVin({
-  selectedVehicle,
-  setVinWindow,
-  setVehicles,
-}) {
+export default function EditVin({ selectedVehicle, setWindow, setVehicles }) {
   const [vin, setVin] = useState(selectedVehicle.vin || "");
 
   async function handleVin() {
@@ -19,11 +15,11 @@ export default function EditVin({
         prev.map((v) =>
           v._id === response.id || v.id === response.id
             ? { ...v, vin: response.vin, updatedAt: response.updatedAt }
-            : v
-        )
+            : v,
+        ),
       );
 
-      setVinWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating vin date", error);
     }
@@ -56,10 +52,7 @@ export default function EditVin({
           </div>
         </div>
         <div className="SettingsBtns">
-          <button
-            onClick={() => setVinWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleVin} className="SettingsBtn">

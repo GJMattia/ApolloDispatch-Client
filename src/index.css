@@ -40,6 +40,13 @@ ul {
   margin: 0;
 }
 
+.Logo {
+  font-size: 2.5rem;
+  font-family: cursive;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
 .Blur {
   filter: blur(5px);
 }
@@ -50,6 +57,10 @@ ul {
 
 .Grey {
   color: #838894;
+}
+
+.Grey2 {
+  color: #bbbcbe;
 }
 
 .Red {
@@ -143,6 +154,7 @@ ul {
 .NotYet {
   background-color: #9ba0ab;
   pointer-events: none;
+  color: rgb(0, 0, 0);
 }
 
 .No {

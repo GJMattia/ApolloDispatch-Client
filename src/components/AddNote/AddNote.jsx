@@ -2,11 +2,7 @@ import "./AddNote.css";
 import { useState } from "react";
 import { addNote } from "../../../utilities/vehicle-api";
 
-export default function AddNote({
-  selectedVehicle,
-  setNoteWindow,
-  setVehicles,
-}) {
+export default function AddNote({ selectedVehicle, setWindow, setVehicles }) {
   const [note, setNote] = useState("");
 
   async function handleNote() {
@@ -20,11 +16,11 @@ export default function AddNote({
         prev.map((v) =>
           v._id === response.id || v.id === response.id
             ? { ...v, notes: response.notes, updatedAt: response.updatedAt }
-            : v
-        )
+            : v,
+        ),
       );
 
-      setNoteWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error adding note", error);
     }
@@ -44,10 +40,7 @@ export default function AddNote({
             maxLength={150}
           />
           <div className="SettingsBtns">
-            <button
-              onClick={() => setNoteWindow((prev) => !prev)}
-              className="SettingsBtn Cancel"
-            >
+            <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
               Cancel
             </button>
             <button onClick={handleNote} className="SettingsBtn">

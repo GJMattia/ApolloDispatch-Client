@@ -2,7 +2,7 @@ import "./CreateVehicle.css";
 import { useState } from "react";
 import { createVehicle } from "../../../utilities/vehicle-api";
 
-export default function CreateVehicle({ setCreateWindow, setVehicles }) {
+export default function CreateVehicle({ setWindow, setVehicles }) {
   const [formData, setFormData] = useState({
     name: "",
     vin: "#VIN",
@@ -14,7 +14,7 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
     try {
       let response = await createVehicle({ formData });
       setVehicles((prevVehicles) => [...prevVehicles, response]);
-      setCreateWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error creating vehicle", error);
     }
@@ -74,10 +74,7 @@ export default function CreateVehicle({ setCreateWindow, setVehicles }) {
         </select>
 
         <div className="SettingsBtns">
-          <button
-            onClick={() => setCreateWindow(false)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button

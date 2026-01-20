@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function EditStatus({
   selectedVehicle,
-  setStatusWindow,
+  setWindow,
   setVehicles,
 }) {
   const [status, setStatus] = useState(selectedVehicle.status);
@@ -20,10 +20,10 @@ export default function EditStatus({
         prev.map((v) =>
           v._id === response.id || v.id === response.id
             ? { ...v, status: response.status, updatedAt: response.updatedAt }
-            : v
-        )
+            : v,
+        ),
       );
-      setStatusWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating drive status", error);
     }
@@ -54,10 +54,7 @@ export default function EditStatus({
           </h1>
         </div>
         <div className="SettingsBtns">
-          <button
-            onClick={() => setStatusWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleStatus} className="SettingsBtn">

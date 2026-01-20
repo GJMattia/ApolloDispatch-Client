@@ -2,11 +2,7 @@ import "./EditFluid.css";
 import { useState } from "react";
 import { updateFluid } from "../../../utilities/vehicle-api";
 
-export default function EditFluid({
-  selectedVehicle,
-  setFluidWindow,
-  setVehicles,
-}) {
+export default function EditFluid({ selectedVehicle, setWindow, setVehicles }) {
   const [fluid, setFluid] = useState(selectedVehicle.fluid);
 
   async function handleFluid() {
@@ -20,10 +16,10 @@ export default function EditFluid({
         prev.map((v) =>
           v._id === response.id || v.id === response.id
             ? { ...v, fluid: response.fluid, updatedAt: response.updatedAt }
-            : v
-        )
+            : v,
+        ),
       );
-      setFluidWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating fluid", error);
     }
@@ -47,10 +43,7 @@ export default function EditFluid({
           </h1>
         </div>
         <div className="SettingsBtns">
-          <button
-            onClick={() => setFluidWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleFluid} className="SettingsBtn">

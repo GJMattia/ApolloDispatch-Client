@@ -47,7 +47,7 @@ export default function ForgotPW() {
 
   async function reset() {
     try {
-      let response = await resetPW({
+      await resetPW({
         password: formData.password,
         email: email,
       });
@@ -70,7 +70,7 @@ export default function ForgotPW() {
         {
           email: foundUser.email,
           code: foundUser.code,
-        }
+        },
       );
       console.log("Email sent successfully:", response.data);
       setError("");
@@ -91,13 +91,15 @@ export default function ForgotPW() {
     <div className="ForgotPW">
       {page === 0 && (
         <>
-          <h1>Password Reset</h1>
-          <p>Please enter your email address</p>
+          <h1 className="Logo">Apollo Dispatch</h1>
+          <p className="Grey2">
+            Please enter your email address to reset your password.
+          </p>
           <input
             className="ResetInput"
             placeholder="Email address"
             minLength="5"
-            maxLength="20"
+            maxLength="40"
             type="text"
             onChange={handleChange}
             required
@@ -106,15 +108,15 @@ export default function ForgotPW() {
             onClick={code}
             className={`ResetBtn ${!email.includes("@") ? "NotYet" : ""}`}
           >
-            Send Code
+            Send Code To Reset PW
           </button>
           <p className="Error">{error}</p>
         </>
       )}
       {page === 1 && (
         <>
-          <h1>Password Reset</h1>
-          <p>Please enter the code that was emailed</p>
+          <h1 className="Logo">Apollo Dispatch</h1>
+          <p className="Grey2">Please enter the code that was emailed.</p>
           <input
             className="ResetInput2"
             placeholder="4 Digit Code"
@@ -135,12 +137,23 @@ export default function ForgotPW() {
       )}
       {page === 2 && (
         <>
-          <h1>Password Reset</h1>
-          <p>Choose a new password</p>
+          <h1 className="Logo">Apollo Dispatch</h1>
+          <p className="Grey2">Choose a new password.</p>
+          <label
+            className={
+              formData.password.length === 0
+                ? "Grey"
+                : formData.password.length < 6
+                  ? "Red"
+                  : "Green"
+            }
+          >
+            Password must be 6 characters long
+          </label>
           <input
             className="ResetInput"
             minLength="6"
-            maxLength="20"
+            maxLength="40"
             placeholder="Create a password"
             type="password"
             name="password"
@@ -150,14 +163,14 @@ export default function ForgotPW() {
           />
           <label
             className={
-              formData.password.length === 0
+              formData.confirm.length === 0
                 ? "Grey"
-                : formData.password.length < 6
-                ? "Red"
-                : "Green"
+                : formData.confirm !== formData.password
+                  ? "Red"
+                  : "Green"
             }
           >
-            Password must be 6 characters long
+            Retype Password
           </label>
           <input
             className="ResetInput"
@@ -170,17 +183,7 @@ export default function ForgotPW() {
             name="confirm"
             required
           />
-          <label
-            className={
-              formData.confirm.length === 0
-                ? "Grey"
-                : formData.confirm !== formData.password
-                ? "Red"
-                : "Green"
-            }
-          >
-            Retype Password
-          </label>
+
           <button
             onClick={reset}
             className={`ResetBtn ${
@@ -197,9 +200,9 @@ export default function ForgotPW() {
 
       {page === 3 && (
         <>
-          <h1>Success</h1>
-          <p>Your password has been reset! </p>
-          <p className="Arrow">⬇️</p>
+          <h1 className="Logo">Apollo Dispatch</h1>
+          <h3 className="Green">Your password has been reset! </h3>
+          <p>Click below to sign in.</p>
         </>
       )}
     </div>

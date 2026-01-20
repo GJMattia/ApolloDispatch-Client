@@ -38,7 +38,6 @@
   color: dodgerblue;
 }
 
-/* Hamburger menu */
 .NavBtn {
   display: flex;
   flex-direction: column;
@@ -84,7 +83,6 @@
   transform: translate3d(0%, -230%, 0) rotate(-225deg);
 }
 
-/* Backdrop covers the page when menu is open */
 .NavBackdrop {
   position: fixed;
   inset: 0;
@@ -95,7 +93,6 @@
   z-index: 20;
 }
 
-/* Panel drops down from the nav bar */
 .NavDropdown {
   position: absolute;
   top: 100%;
@@ -107,13 +104,12 @@
   z-index: 40;
 }
 
-/* Options list inside dropdown */
 .NavOptions {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column; /* stack items vertically */
+  flex-direction: column;
   width: 100%;
   border-top: 1px solid rgb(84, 84, 84);
 }
@@ -123,16 +119,15 @@
   padding: 0.75rem 1rem;
   cursor: pointer;
   color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* faint separator */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: background 120ms ease;
   text-align: center;
 }
 
 .NavOptions li:last-child {
-  border-bottom: none; /* no divider after last item */
+  border-bottom: none;
 }
 
-/* remove the last border */
 .NavOptions li:last-child {
   border-bottom: none;
 }
@@ -154,6 +149,6 @@
   }
 
   .NavBtn {
-    transform: scale(0.6); /* shrink everything proportionally */
+    transform: scale(0.6);
   }
 }

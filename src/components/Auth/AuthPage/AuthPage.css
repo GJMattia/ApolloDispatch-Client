@@ -1,5 +1,5 @@
 .AuthPage {
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -10,7 +10,8 @@
   border-radius: 0.5rem;
   border: 1px solid white;
   user-select: none;
-  margin-top: 3rem;
+  margin-top: 1rem;
+  height: 37rem;
 }
 
 .AuthHeader {
@@ -39,6 +40,10 @@
 
 .Forgot:hover {
   text-decoration: underline;
+}
+
+.AuthFormWrapper {
+  width: 100%;
 }
 
 @media (max-width: 800px) {

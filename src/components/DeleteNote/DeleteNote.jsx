@@ -1,11 +1,7 @@
 import "./DeleteNote.css";
 import { deleteNote } from "../../../utilities/vehicle-api";
 
-export default function DeleteNote({
-  setVehicles,
-  selectedNote,
-  setDeleteNoteWindow,
-}) {
+export default function DeleteNote({ setVehicles, selectedNote, setWindow }) {
   async function handleDeleteNote() {
     try {
       const response = await deleteNote({
@@ -24,10 +20,10 @@ export default function DeleteNote({
 
             notes: v.notes.filter((_, i) => i !== response.noteIndex),
           };
-        })
+        }),
       );
 
-      setDeleteNoteWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error deleting note".error);
     }
@@ -41,10 +37,7 @@ export default function DeleteNote({
         <h4 className="DeleteNoteInfo">{selectedNote.noteContent}</h4>
 
         <div className="SettingsBtns">
-          <button
-            onClick={() => setDeleteNoteWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleDeleteNote} className="SettingsBtn">

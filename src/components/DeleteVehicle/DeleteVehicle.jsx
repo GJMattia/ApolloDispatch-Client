@@ -1,10 +1,9 @@
 import "./DeleteVehicle.css";
-import { useState } from "react";
 import { deleteVehicle } from "../../../utilities/vehicle-api/";
 
-export default function EditTires({
+export default function DeleteVehicle({
   selectedVehicle,
-  setDeleteVehicleWindow,
+  setWindow,
   setVehicles,
 }) {
   async function handleDeleteVehicle() {
@@ -15,10 +14,10 @@ export default function EditTires({
 
       setVehicles((prev) =>
         prev.filter(
-          (v) => v._id !== response.vehicleID && v.id !== response.vehicleID
-        )
+          (v) => v._id !== response.vehicleID && v.id !== response.vehicleID,
+        ),
       );
-      setDeleteVehicleWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error updating tire", error);
     }
@@ -30,10 +29,7 @@ export default function EditTires({
         <h1>DELETE {selectedVehicle.name}?</h1>
         <h2 className="Red No">CAUTION! You cannot undo.</h2>
         <div className="SettingsBtns">
-          <button
-            className="SettingsBtn Cancel"
-            onClick={() => setDeleteVehicleWindow(false)}
-          >
+          <button className="SettingsBtn Cancel" onClick={() => setWindow(0)}>
             Cancel
           </button>
           <button className="SettingsBtn" onClick={handleDeleteVehicle}>

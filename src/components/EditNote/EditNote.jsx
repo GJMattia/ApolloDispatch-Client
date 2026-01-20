@@ -2,11 +2,7 @@ import "./EditNote.css";
 import { useState } from "react";
 import { editNote } from "../../../utilities/vehicle-api";
 
-export default function EditNote({
-  setVehicles,
-  selectedNote,
-  setEditNoteWindow,
-}) {
+export default function EditNote({ setVehicles, selectedNote, setWindow }) {
   const [note, setNote] = useState(selectedNote.noteContent);
 
   async function handleEditNote() {
@@ -16,8 +12,6 @@ export default function EditNote({
         noteIndex: selectedNote.noteIndex,
         editedNote: note,
       });
-
-      console.log(response);
 
       setVehicles((prev) =>
         prev.map((v) => {
@@ -33,13 +27,13 @@ export default function EditNote({
                     text: response.editedNote,
                     updatedAt: response.updatedAt,
                   }
-                : n
+                : n,
             ),
           };
-        })
+        }),
       );
 
-      setEditNoteWindow(false);
+      setWindow(0);
     } catch (error) {
       console.error("error editing note".error);
     }
@@ -59,10 +53,7 @@ export default function EditNote({
         />
 
         <div className="SettingsBtns">
-          <button
-            onClick={() => setEditNoteWindow((prev) => !prev)}
-            className="SettingsBtn Cancel"
-          >
+          <button onClick={() => setWindow(0)} className="SettingsBtn Cancel">
             Cancel
           </button>
           <button onClick={handleEditNote} className="SettingsBtn">
