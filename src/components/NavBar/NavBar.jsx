@@ -26,7 +26,6 @@ export default function NavBar({ user, setUser }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [menu]);
 
-  // Close and restore scroll when unmounting/closing
   useEffect(() => {
     return () => {
       document.documentElement.style.overflowY = "auto";
@@ -115,7 +114,7 @@ export default function NavBar({ user, setUser }) {
                   </>
                 )}
                 <li role="menuitem" onClick={() => go("/version")}>
-                  Version (v0.5)
+                  Version (v0.55)
                 </li>
               </ul>
             </motion.div>

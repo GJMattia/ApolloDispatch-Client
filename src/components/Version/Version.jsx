@@ -3,13 +3,24 @@ import "./Version.css";
 
 const releases = [
   {
-    version: "0.50",
+    version: "0.55",
     date: "January 19, 2026",
     notes: [
       "Changed version format",
       "Added delete vehicle functionality",
       "Increased allowed characters for usernames and passwords in input fields",
       "Fixed style issue on schedule page",
+    ],
+  },
+  {
+    version: "0.50",
+    date: "January 13, 2026",
+    notes: [
+      "Added notification for wrong password",
+      "Fixed CSS on various pages",
+      "Added an updated at feature on each vehicle object",
+      "Added the ability to add plate info, registration information to vehicle",
+      "Reworked how to update the status of a vehicle",
     ],
   },
   {
